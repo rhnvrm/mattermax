@@ -708,3 +708,13 @@ duplication, team/DM/deleted filters and the priority toggle. Copy only count
 fields so the concurrent page result is retained. Regenerate store adapters and
 mocks; add compatibility and real-data App benchmarks. No HTTP API, schema,
 configuration or dependency changes.
+
+### thread-unread-reply-index.patch
+
+2026-11-14. Extend the RootId/DeleteAt post index with CreateAt for unread-reply
+range scans. Build the replacement concurrently before dropping the original;
+downgrade restores the original before removing the replacement. Use non-null
+primary-key-equivalent COUNT(*) in the three unread-reply queries. Preserve
+existing filters and stored empty-root behavior without another query branch.
+Add compatibility, migration round-trip and real-store benchmarks. No HTTP API,
+configuration or third-party dependency changes.

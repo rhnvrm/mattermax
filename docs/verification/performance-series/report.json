@@ -12,7 +12,8 @@
     "PR #51 cherry-picked without conflicts. Its four changed files and patch are byte-identical to the standalone contribution. No extra production edits.",
     "PR #52 cherry-picked without conflicts. Only Git index hashes and hunk line positions differ in its patch; removing those format fields yields a byte-identical patch. Its new test file and complete declaration delta match the standalone contribution. No extra production edits.",
     "PR #53 cherry-picked without conflicts. Only Git index hashes and hunk line positions differ in its patch; removing those format fields yields a byte-identical patch. Its new test file and complete declaration delta match the standalone contribution. No extra production edits.",
-    "PR #54 cherry-picked without conflicts. Only Git index hashes and hunk line positions differ in its patch; removing those format fields yields a byte-identical patch. Its three new test files and complete declaration delta match the standalone contribution. Generated adapters and mocks reproduce without changes. No extra production edits."
+    "PR #54 cherry-picked without conflicts. Only Git index hashes and hunk line positions differ in its patch; removing those format fields yields a byte-identical patch. Its three new test files and complete declaration delta match the standalone contribution. Generated adapters and mocks reproduce without changes. No extra production edits.",
+    "PR #55 cherry-picked without conflicts. Its six new source files, including staged migrations, match the standalone contribution. Removing only Git index hashes and hunk line positions yields a byte-identical patch. No extra production edits. Store interfaces, generated adapters and mocks are unchanged since the sixteen-contribution checkpoint."
   ],
   "limits": [
     "Selected race suites are not the entire repository test suite.",
@@ -22,9 +23,9 @@
     "Frontend JavaScript/browser flows remain untested. Earlier webpack warnings include three missing MUI exports."
   ],
   "status": "passed",
-  "scope": "Combined verification of sixteen performance contributions, PRs #39 through #54, over the original 38-patch stack. Fork-only checkpoint; no extra upstream PR.",
-  "source_workspace_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
-  "source_tree_sha": "148149a7a3e450132177aa7933326c47549c37dc",
+  "scope": "Combined verification of seventeen performance contributions, PRs #39 through #55, over the original 38-patch stack. Fork-only checkpoint; no extra upstream PR.",
+  "source_workspace_sha": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0",
+  "source_tree_sha": "054c551edb940b49cb36e84d18825e0b8d26bdc1",
   "go_work": "go 1.26.10\n\nuse (\n\t.\n\t./public\n)\n",
   "contributions": [
     {
@@ -90,60 +91,64 @@
     {
       "pr": 54,
       "url": "https://github.com/opnlabs/mattermax/pull/54"
+    },
+    {
+      "pr": 55,
+      "url": "https://github.com/opnlabs/mattermax/pull/55"
     }
   ],
   "tests": [
     {
-      "name": "integration-sixteen-app-race",
+      "name": "integration-seventeen-app-race",
       "package": "app",
-      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer ./channels/store/sqlstore -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback|TestFirstAutolinkPrecheck|TestPriorityAcknowledgementArrayReads|TestPostPriorityStore|TestPostAcknowledgementsStore|TestSqlxSelect|TestSqlxSelectContext|TestPostAcknowledgementsApp|TestCreatePostForPriority|TestAcknowledgePost|TestLinkPreviewDomainChecks|TestParseImages|TestThreadStore|TestTeamThreadUnreadAggregation|TestGetTeamUnread|TestGetMyTeamsUnread|TestUserThreadCountAggregation|TestUserThreadCountFlags|TestUserThreadCountFailure|TestUserThreadCountPriorityFlag|TestGetThreadsForUserSanitizesRootPost|TestGetThreadsForUser|TestGetThreadsForUser_AfterTeamRemovalAndReinvite|TestFollowThreads|TestReadThreads)$' -count=1 -timeout=20m -json",
-      "source_workspace_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
+      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer ./channels/store/sqlstore -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback|TestFirstAutolinkPrecheck|TestPriorityAcknowledgementArrayReads|TestPostPriorityStore|TestPostAcknowledgementsStore|TestSqlxSelect|TestSqlxSelectContext|TestPostAcknowledgementsApp|TestCreatePostForPriority|TestAcknowledgePost|TestLinkPreviewDomainChecks|TestParseImages|TestThreadStore|TestPostStore|TestThreadUnreadReplyCountCompatibility|TestMigration000244|TestTeamThreadUnreadAggregation|TestGetTeamUnread|TestGetMyTeamsUnread|TestUserThreadCountAggregation|TestUserThreadCountFlags|TestUserThreadCountFailure|TestUserThreadCountPriorityFlag|TestGetThreadsForUserSanitizesRootPost|TestGetThreadsForUser|TestGetThreadsForUser_AfterTeamRemovalAndReinvite|TestFollowThreads|TestReadThreads)$' -count=1 -timeout=20m -json",
+      "source_workspace_sha": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0",
       "status": "passed",
       "counts": {
         "pass": 332,
         "fail": 0,
         "skip": 0
       },
-      "private_log_sha256": "0d86ca73495dd751b442b379cb00c5fbb9fa2ab823fbd7bab881192a37b9e159"
+      "private_log_sha256": "989effdcb248827b82054a2d99af6d629f3e22f1ba89b6ab8209c25f83888873"
     },
     {
-      "name": "integration-sixteen-api4-race",
+      "name": "integration-seventeen-api4-race",
       "package": "api4",
-      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer ./channels/store/sqlstore -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback|TestFirstAutolinkPrecheck|TestPriorityAcknowledgementArrayReads|TestPostPriorityStore|TestPostAcknowledgementsStore|TestSqlxSelect|TestSqlxSelectContext|TestPostAcknowledgementsApp|TestCreatePostForPriority|TestAcknowledgePost|TestLinkPreviewDomainChecks|TestParseImages|TestThreadStore|TestTeamThreadUnreadAggregation|TestGetTeamUnread|TestGetMyTeamsUnread|TestUserThreadCountAggregation|TestUserThreadCountFlags|TestUserThreadCountFailure|TestUserThreadCountPriorityFlag|TestGetThreadsForUserSanitizesRootPost|TestGetThreadsForUser|TestGetThreadsForUser_AfterTeamRemovalAndReinvite|TestFollowThreads|TestReadThreads)$' -count=1 -timeout=20m -json",
-      "source_workspace_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
+      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer ./channels/store/sqlstore -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback|TestFirstAutolinkPrecheck|TestPriorityAcknowledgementArrayReads|TestPostPriorityStore|TestPostAcknowledgementsStore|TestSqlxSelect|TestSqlxSelectContext|TestPostAcknowledgementsApp|TestCreatePostForPriority|TestAcknowledgePost|TestLinkPreviewDomainChecks|TestParseImages|TestThreadStore|TestPostStore|TestThreadUnreadReplyCountCompatibility|TestMigration000244|TestTeamThreadUnreadAggregation|TestGetTeamUnread|TestGetMyTeamsUnread|TestUserThreadCountAggregation|TestUserThreadCountFlags|TestUserThreadCountFailure|TestUserThreadCountPriorityFlag|TestGetThreadsForUserSanitizesRootPost|TestGetThreadsForUser|TestGetThreadsForUser_AfterTeamRemovalAndReinvite|TestFollowThreads|TestReadThreads)$' -count=1 -timeout=20m -json",
+      "source_workspace_sha": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0",
       "status": "passed",
       "counts": {
         "pass": 135,
         "fail": 0,
         "skip": 0
       },
-      "private_log_sha256": "0d86ca73495dd751b442b379cb00c5fbb9fa2ab823fbd7bab881192a37b9e159"
+      "private_log_sha256": "989effdcb248827b82054a2d99af6d629f3e22f1ba89b6ab8209c25f83888873"
     },
     {
-      "name": "integration-sixteen-localcachelayer-race",
+      "name": "integration-seventeen-localcachelayer-race",
       "package": "localcachelayer",
-      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer ./channels/store/sqlstore -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback|TestFirstAutolinkPrecheck|TestPriorityAcknowledgementArrayReads|TestPostPriorityStore|TestPostAcknowledgementsStore|TestSqlxSelect|TestSqlxSelectContext|TestPostAcknowledgementsApp|TestCreatePostForPriority|TestAcknowledgePost|TestLinkPreviewDomainChecks|TestParseImages|TestThreadStore|TestTeamThreadUnreadAggregation|TestGetTeamUnread|TestGetMyTeamsUnread|TestUserThreadCountAggregation|TestUserThreadCountFlags|TestUserThreadCountFailure|TestUserThreadCountPriorityFlag|TestGetThreadsForUserSanitizesRootPost|TestGetThreadsForUser|TestGetThreadsForUser_AfterTeamRemovalAndReinvite|TestFollowThreads|TestReadThreads)$' -count=1 -timeout=20m -json",
-      "source_workspace_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
+      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer ./channels/store/sqlstore -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback|TestFirstAutolinkPrecheck|TestPriorityAcknowledgementArrayReads|TestPostPriorityStore|TestPostAcknowledgementsStore|TestSqlxSelect|TestSqlxSelectContext|TestPostAcknowledgementsApp|TestCreatePostForPriority|TestAcknowledgePost|TestLinkPreviewDomainChecks|TestParseImages|TestThreadStore|TestPostStore|TestThreadUnreadReplyCountCompatibility|TestMigration000244|TestTeamThreadUnreadAggregation|TestGetTeamUnread|TestGetMyTeamsUnread|TestUserThreadCountAggregation|TestUserThreadCountFlags|TestUserThreadCountFailure|TestUserThreadCountPriorityFlag|TestGetThreadsForUserSanitizesRootPost|TestGetThreadsForUser|TestGetThreadsForUser_AfterTeamRemovalAndReinvite|TestFollowThreads|TestReadThreads)$' -count=1 -timeout=20m -json",
+      "source_workspace_sha": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0",
       "status": "passed",
       "counts": {
-        "pass": 37,
+        "pass": 211,
         "fail": 0,
         "skip": 0
       },
-      "private_log_sha256": "0d86ca73495dd751b442b379cb00c5fbb9fa2ab823fbd7bab881192a37b9e159"
+      "private_log_sha256": "989effdcb248827b82054a2d99af6d629f3e22f1ba89b6ab8209c25f83888873"
     },
     {
-      "name": "integration-sixteen-sqlstore-race",
+      "name": "integration-seventeen-sqlstore-race",
       "package": "sqlstore",
-      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer ./channels/store/sqlstore -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback|TestFirstAutolinkPrecheck|TestPriorityAcknowledgementArrayReads|TestPostPriorityStore|TestPostAcknowledgementsStore|TestSqlxSelect|TestSqlxSelectContext|TestPostAcknowledgementsApp|TestCreatePostForPriority|TestAcknowledgePost|TestLinkPreviewDomainChecks|TestParseImages|TestThreadStore|TestTeamThreadUnreadAggregation|TestGetTeamUnread|TestGetMyTeamsUnread|TestUserThreadCountAggregation|TestUserThreadCountFlags|TestUserThreadCountFailure|TestUserThreadCountPriorityFlag|TestGetThreadsForUserSanitizesRootPost|TestGetThreadsForUser|TestGetThreadsForUser_AfterTeamRemovalAndReinvite|TestFollowThreads|TestReadThreads)$' -count=1 -timeout=20m -json",
-      "source_workspace_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
+      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer ./channels/store/sqlstore -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback|TestFirstAutolinkPrecheck|TestPriorityAcknowledgementArrayReads|TestPostPriorityStore|TestPostAcknowledgementsStore|TestSqlxSelect|TestSqlxSelectContext|TestPostAcknowledgementsApp|TestCreatePostForPriority|TestAcknowledgePost|TestLinkPreviewDomainChecks|TestParseImages|TestThreadStore|TestPostStore|TestThreadUnreadReplyCountCompatibility|TestMigration000244|TestTeamThreadUnreadAggregation|TestGetTeamUnread|TestGetMyTeamsUnread|TestUserThreadCountAggregation|TestUserThreadCountFlags|TestUserThreadCountFailure|TestUserThreadCountPriorityFlag|TestGetThreadsForUserSanitizesRootPost|TestGetThreadsForUser|TestGetThreadsForUser_AfterTeamRemovalAndReinvite|TestFollowThreads|TestReadThreads)$' -count=1 -timeout=20m -json",
+      "source_workspace_sha": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0",
       "status": "passed",
       "counts": {
-        "pass": 161,
+        "pass": 339,
         "fail": 0,
         "skip": 0
       },
-      "private_log_sha256": "0d86ca73495dd751b442b379cb00c5fbb9fa2ab823fbd7bab881192a37b9e159"
+      "private_log_sha256": "989effdcb248827b82054a2d99af6d629f3e22f1ba89b6ab8209c25f83888873"
     }
   ],
   "retained_tests": [
@@ -174,40 +179,40 @@
       "source_workspace_sha": "886db02677e9bc04e3ce81aebe567c478b6adccb"
     }
   ],
-  "total_fresh_pass_events": 665,
+  "total_fresh_pass_events": 1017,
   "retained_pass_events": 362,
   "counting": "Go parent and subtest pass events, excluding package summaries. Fresh and retained results are separate; retained results keep their original revision and scope.",
   "declaration_integrity": {
-    "contributed_declaration_changes": 120,
-    "declarations_verified": 3179,
-    "files": 44,
+    "contributed_declaration_changes": 126,
+    "declarations_verified": 3182,
+    "files": 46,
     "mismatches": null,
-    "scope": "All non-import top-level Go declarations in the files changed by the sixteen contributions. Expected state is the union of their independent declaration deltas over the shared base. Imports were merged and typechecked separately.",
+    "scope": "All non-import top-level Go declarations in the files changed by the seventeen contributions. Expected state is the union of their independent declaration deltas over the shared base. Imports were merged and typechecked separately.",
     "status": "passed",
     "negative_control": {
       "status": "passed",
-      "method": "Temporary-copy negative control rejects an unexpected declaration; production source untouched.",
+      "method": "Temporary-copy negative control rejects an extra declaration; production source untouched.",
       "detected_mismatches": [
-        "server/channels/store/timerlayer/timerlayer.go:unexpected func:unexpectedSixteenDeclaration"
+        "server/channels/store/sqlstore/thread_store.go:unexpected func:unexpectedSeventeenDeclaration"
       ]
     },
-    "tool_sha256": "f8ae16991ca01b9ad07d98a51323e451ea39eadbf48268d9b416161cba5b2471"
+    "tool_sha256": "5194c2f5945193f0bf07a6231ba5330ca36da0105490a44d389bf09c83d19515"
   },
   "patch_integrity": {
     "status": "passed",
     "base": "d2b07cc3f7c3200349e32ca167a39bdc85255baf",
     "original_patch_files_verified_byte_identical": 38,
-    "new_performance_patches": 16,
-    "combined_series": 54,
-    "source_workspace_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
-    "previous_patch_files_verified_byte_identical": 53,
+    "new_performance_patches": 17,
+    "combined_series": 55,
+    "source_workspace_sha": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0",
+    "previous_patch_files_verified_byte_identical": 54,
     "new_patch_byte_identical_to_standalone": false,
     "new_patch_changes_only_index_hashes_and_hunk_positions": true
   },
   "retained_store_code_integrity": {
     "status": "passed",
     "tested_source_sha": "886db02677e9bc04e3ce81aebe567c478b6adccb",
-    "current_source_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
+    "current_source_sha": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0",
     "unchanged_paths": [
       "server/public",
       "server/platform",
@@ -224,42 +229,50 @@
       "server/channels/store/sqlstore/priority_ack_array_test.go",
       "server/channels/store/sqlstore/team_thread_unreads_test.go",
       "server/channels/store/sqlstore/thread_store.go",
+      "server/channels/store/sqlstore/thread_unread_reply_benchmark_test.go",
+      "server/channels/store/sqlstore/thread_unread_reply_index_test.go",
       "server/channels/store/sqlstore/user_thread_counts_test.go",
       "server/channels/store/store.go",
       "server/channels/store/storetest/mocks/ThreadStore.go",
       "server/channels/store/timerlayer/timerlayer.go"
     ],
-    "note": "Reaction cache, priority/ack reads and user-thread count aggregation differ from the historical store checks. Current selected store/cache suites cover them, including the complete ThreadStore suite. Earlier broad results remain historical; public/platform dependencies are byte-identical."
+    "note": "Historical broad store results retain their original source and schema. Current selected race checks freshly include complete SQL/cache PostStore and ThreadStore suites and staged root-index migration checks. Public/platform dependencies remain byte-identical.",
+    "changed_migration_paths": [
+      "server/channels/db/migrations/postgres/000244_posts_root_delete_create_at.down.sql",
+      "server/channels/db/migrations/postgres/000244_posts_root_delete_create_at.up.sql",
+      "server/channels/db/migrations/postgres/000245_replace_posts_root_delete_index.down.sql",
+      "server/channels/db/migrations/postgres/000245_replace_posts_root_delete_index.up.sql"
+    ]
   },
   "backend_build": {
     "status": "passed",
-    "source_workspace_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
+    "source_workspace_sha": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0",
     "command": [
       "go",
       "build",
       "-tags",
       "production",
       "-ldflags",
-      "-X github.com/mattermost/mattermost/server/public/model.BuildNumber=12.0.2-1.integration-sixteen -X github.com/mattermost/mattermost/server/public/model.BuildHash=b05885121ac1c540bf7ae61956b3d26ff08e9d69 -X github.com/mattermost/mattermost/server/public/model.BuildEnterpriseReady=false",
+      "-X github.com/mattermost/mattermost/server/public/model.BuildNumber=12.0.2-1.integration-seventeen -X github.com/mattermost/mattermost/server/public/model.BuildHash=9a23c53e1007e2c5267780d46c6c1487a1b8f1c0 -X github.com/mattermost/mattermost/server/public/model.BuildEnterpriseReady=false",
       "-o",
-      "/tmp/mattermax-integrated-sixteen-server",
+      "/tmp/mattermax-integrated-seventeen-server",
       "./cmd/mattermost"
     ],
     "build_tags": "production",
     "forbidden_build_tags": false,
     "enterprise_symbols_found": false,
-    "binary_sha256": "2d0479e61f1db29db5264dbf717ec8411e51b05f85c72430b2293b51448f4ea1",
+    "binary_sha256": "a88815d3d0c567a7a1bb05382102d9a8c3809632378daa18fa56721b010881ef",
     "private_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "build_number": "12.0.2-1.integration-sixteen",
-    "build_hash": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
+    "build_number": "12.0.2-1.integration-seventeen",
+    "build_hash": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0",
     "build_enterprise_ready": "false",
     "scope": "Public backend only. No branded frontend/package rebuild, deployment or production load test.",
     "symbol_tool": "Matching standard SDK cmd/nm via temporary GOROOT; same exclusion criteria as scripts/build-release.sh."
   },
   "runtime_smoke": {
     "status": "passed",
-    "database": "mm_sixteen_7711c9df8379",
-    "runtime_directory": "/tmp/mattermax-sixteen-smoke-4rs05i4w",
+    "database": "mm_seventeen_5ccf74c63ea9",
+    "runtime_directory": "/tmp/mattermax-seventeen-smoke-cc0id48x",
     "database_removed": true,
     "server_stopped": true,
     "probes": [
@@ -283,22 +296,22 @@
       }
     ],
     "base_url": "http://127.0.0.1:18065",
-    "binary": "/tmp/mattermax-integrated-sixteen-server",
+    "binary": "/tmp/mattermax-integrated-seventeen-server",
     "environment": "Allowlisted system variables only; configuration comes from the temporary file plus repository overlay.",
-    "verified_build_number": "12.0.2-1.integration-sixteen",
+    "verified_build_number": "12.0.2-1.integration-seventeen",
     "runtime_directory_removed": true,
-    "source_workspace_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69"
+    "source_workspace_sha": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0"
   },
   "patch_check": {
     "command": "just check",
     "status": "passed",
-    "patches": 54,
-    "private_log_sha256": "2993664a30425a6f4b15297c4731b451d2b756751b0994a9ca12f56d3171b89e"
+    "patches": 55,
+    "private_log_sha256": "aa45bb17a42a80b32a664ce5a3d3615cb18ba743ba6c000fb2caff0fa252bd54"
   },
   "ordered_benchmark_smoke": {
     "status": "passed",
-    "source_workspace_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
-    "cases": 116,
+    "source_workspace_sha": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0",
+    "cases": 146,
     "case_names": [
       "BenchmarkAttachmentHistory/posts=1/files=2/cold",
       "BenchmarkAttachmentHistory/posts=1/files=2/warm",
@@ -392,6 +405,36 @@
       "BenchmarkTeamThreadUnreadAggregation/PostgreSQL/threads=1000/urgent=false/serial",
       "BenchmarkTeamThreadUnreadAggregation/PostgreSQL/threads=1000/urgent=true/parallel",
       "BenchmarkTeamThreadUnreadAggregation/PostgreSQL/threads=1000/urgent=true/serial",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=0/all_read/count",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=0/all_read/page",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=0/all_read/reply_total_control",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=0/all_read/single",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=0/all_read/totals_control",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=0/mostly_read/count",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=0/mostly_read/page",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=0/mostly_read/reply_total_control",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=0/mostly_read/single",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=0/mostly_read/totals_control",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=100/all_read/count",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=100/all_read/page",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=100/all_read/reply_total_control",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=100/all_read/single",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=100/all_read/totals_control",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=100/mostly_read/count",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=100/mostly_read/page",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=100/mostly_read/reply_total_control",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=100/mostly_read/single",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=100/mostly_read/totals_control",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=1000/all_read/count",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=1000/all_read/page",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=1000/all_read/reply_total_control",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=1000/all_read/single",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=1000/all_read/totals_control",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=1000/mostly_read/count",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=1000/mostly_read/page",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=1000/mostly_read/reply_total_control",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=1000/mostly_read/single",
+      "BenchmarkThreadUnreadReplies/PostgreSQL/replies=1000/mostly_read/totals_control",
       "BenchmarkUserThreadCountsHistory/priority=false/threads=0/page/serial",
       "BenchmarkUserThreadCountsHistory/priority=false/threads=0/threads_only/serial",
       "BenchmarkUserThreadCountsHistory/priority=false/threads=0/totals/serial",
@@ -417,11 +460,10 @@
       "BenchmarkUserThreadCountsHistory/priority=true/threads=1000/totals/parallel",
       "BenchmarkUserThreadCountsHistory/priority=true/threads=1000/totals/serial"
     ],
-    "command": "go test -p 1 ./channels/app ./channels/store/localcachelayer ./channels/store/sqlstore -run '^$' -bench '^(BenchmarkReactionHistory|BenchmarkMarkdownImageHistory|BenchmarkPermalinkHistory|BenchmarkAttachmentHistory|BenchmarkReactionCacheRead|BenchmarkFirstAutolinkPrecheck|BenchmarkAutolinkPrecheckHistory|BenchmarkPriorityAcknowledgementReads|BenchmarkPriorityAcknowledgementHistory|BenchmarkLinkPreviewDomainChecks|BenchmarkLinkPreviewDomainHistory|BenchmarkTeamThreadUnreadAggregation|BenchmarkUserThreadCountsHistory)$' -benchtime=1x -count=1 -timeout=10m -json",
+    "command": "go test -p 1 ./channels/app ./channels/store/localcachelayer ./channels/store/sqlstore -run '^$' -bench '^(BenchmarkReactionHistory|BenchmarkMarkdownImageHistory|BenchmarkPermalinkHistory|BenchmarkAttachmentHistory|BenchmarkReactionCacheRead|BenchmarkFirstAutolinkPrecheck|BenchmarkAutolinkPrecheckHistory|BenchmarkPriorityAcknowledgementReads|BenchmarkPriorityAcknowledgementHistory|BenchmarkLinkPreviewDomainChecks|BenchmarkLinkPreviewDomainHistory|BenchmarkTeamThreadUnreadAggregation|BenchmarkUserThreadCountsHistory|BenchmarkThreadUnreadReplies)$' -benchtime=1x -count=1 -timeout=10m -json",
     "scope": "Single-iteration execution/output checks only. These timings are not performance evidence.",
-    "private_log_sha256": "9232c66dd36ca41fbb332e8ef0cca5783466c47e19330f74410181706d405b35",
-    "expected_case_set_verified": true,
-    "result_parsing": "Concatenate JSON output fragments per package/test before matching complete benchmark-result lines; one result was split across two JSON events."
+    "private_log_sha256": "69ed6c65ae80d94c8289e34d6f840c45a0cd018319cee7a117a94c3e06c9d953",
+    "expected_case_set_verified": true
   },
   "earlier_benchmark_fixture_correction": {
     "status": "passed",
@@ -436,7 +478,7 @@
     "note": "Only benchmark functions changed: populate PostList.Order and check returned order length. Earlier race checks retain their original source scope; ordered benchmark smoke and backend build/smoke are refreshed separately.",
     "measurement_error": "AddPost populates Posts but not Order. The earlier benchmark fixtures omitted Order and skipped priority/acknowledgement reads; corrected reports supersede those timings."
   },
-  "test_scope_note": "Fresh selected app/API/cache/priority-ack SQL race suites cover current combined source, including team/user thread count aggregation, response flags and membership filtering. Historical broad SQL/cache runs keep their original revisions. Standalone benchmarks do not measure combined throughput.",
+  "test_scope_note": "Fresh selected app/API/cache/SQL race suites cover current combined source, including complete PostStore and ThreadStore suites, staged root-index migration round trips, user/team thread counts, metadata access policies and cache behavior. Historical broad tests retain their original revisions. Standalone benchmarks are not combined throughput measurements.",
   "full_release_build": {
     "status": "passed",
     "release": "12.0.2-1.integration.b99123a",
@@ -565,29 +607,30 @@
   },
   "incremental_code_integrity": {
     "status": "passed",
-    "source_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
-    "previous_source_sha": "7e3b20a8a84c54ded76b7c0e699668e0492e51ac",
+    "source_sha": "9a23c53e1007e2c5267780d46c6c1487a1b8f1c0",
+    "previous_source_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
     "only_changed_source_paths": [
-      "server/channels/app/user.go",
-      "server/channels/app/user_thread_counts_benchmark_test.go",
-      "server/channels/app/user_thread_counts_test.go",
-      "server/channels/store/retrylayer/retrylayer.go",
+      "server/channels/db/migrations/postgres/000244_posts_root_delete_create_at.down.sql",
+      "server/channels/db/migrations/postgres/000244_posts_root_delete_create_at.up.sql",
+      "server/channels/db/migrations/postgres/000245_replace_posts_root_delete_index.down.sql",
+      "server/channels/db/migrations/postgres/000245_replace_posts_root_delete_index.up.sql",
       "server/channels/store/sqlstore/thread_store.go",
-      "server/channels/store/sqlstore/user_thread_counts_test.go",
-      "server/channels/store/store.go",
-      "server/channels/store/storetest/mocks/ThreadStore.go",
-      "server/channels/store/timerlayer/timerlayer.go"
+      "server/channels/store/sqlstore/thread_unread_reply_benchmark_test.go",
+      "server/channels/store/sqlstore/thread_unread_reply_index_test.go"
     ],
-    "new_test_files_byte_identical_to_standalone": [
-      "server/channels/app/user_thread_counts_benchmark_test.go",
-      "server/channels/app/user_thread_counts_test.go",
-      "server/channels/store/sqlstore/user_thread_counts_test.go"
+    "new_source_files_byte_identical_to_standalone": [
+      "server/channels/db/migrations/postgres/000244_posts_root_delete_create_at.down.sql",
+      "server/channels/db/migrations/postgres/000244_posts_root_delete_create_at.up.sql",
+      "server/channels/db/migrations/postgres/000245_replace_posts_root_delete_index.down.sql",
+      "server/channels/db/migrations/postgres/000245_replace_posts_root_delete_index.up.sql",
+      "server/channels/store/sqlstore/thread_unread_reply_benchmark_test.go",
+      "server/channels/store/sqlstore/thread_unread_reply_index_test.go"
     ],
-    "previous_patch_files_byte_identical": 53,
+    "previous_patch_files_byte_identical": 54,
     "new_patch_byte_identical_to_standalone": false,
     "patch_after_removing_only_index_and_hunk_positions_byte_identical": true,
-    "normalized_patch_sha256": "8040a6bdf10d8404e647b89a33bae1e89991236c140503180ea95287545351a5",
-    "generated_layers_and_mocks_reproduced_without_changes": true
+    "normalized_patch_sha256": "7ca255ff05fdc4dd3445bfd34c5c39d4bb93aa83d44112dbc1f20197d208a072",
+    "generator_inputs_and_outputs_unchanged_since_sixteen": true
   },
   "full_release_scope_note": "Full branded packaging and asset-delivery smoke remain scoped to d4194a4b, the ten-contribution revision. No current-revision full packaging claim. Source webapp, root branding, overlay and release scripts are unchanged; the new backend is built and checked separately.",
   "historical_verification_reports": [
@@ -632,11 +675,28 @@
       "fresh_pass_events": 623,
       "report_url": "https://github.com/rhnvrm/mattermax/blob/7df008f8e7c8f05446a03786b145b9ade33ba667/docs/verification/performance-series/report.json",
       "scope": "Earlier verification report, not relabeled current."
+    },
+    {
+      "root_sha": "3857dd0d98a7cdbb489b800f84075115940fb7ff",
+      "source_workspace_sha": "b05885121ac1c540bf7ae61956b3d26ff08e9d69",
+      "fresh_pass_events": 665,
+      "report_url": "https://github.com/rhnvrm/mattermax/blob/3857dd0d98a7cdbb489b800f84075115940fb7ff/docs/verification/performance-series/report.json",
+      "scope": "Earlier verification report, not relabeled current."
     }
   ],
   "held_experiments_excluded": {
     "status": "passed",
-    "excluded_source_commit": "8121484865115eadc709fdf67abde0cce06161e3",
-    "reason": "Emoji-name capacity experiment had full-page latency regressions and has no upstream PR. It is not an ancestor of current source."
+    "experiments": [
+      {
+        "source_commit": "8121484865115eadc709fdf67abde0cce06161e3",
+        "reason": "Emoji-name capacity experiment had full-page latency regressions.",
+        "ancestor_of_current": false
+      },
+      {
+        "source_commit": "5b577a16fb8f828de52a851798c7fb7b520e400a",
+        "reason": "Live-reply partial-index experiment regressed small/empty pages.",
+        "ancestor_of_current": false
+      }
+    ]
   }
 }
