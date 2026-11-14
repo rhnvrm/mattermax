@@ -7,7 +7,8 @@
     "Regenerated store layers/mocks; they matched the combined source without further changes.",
     "PRs #45 through #47 cherry-picked without conflicts. Store layers and mocks regenerated without changes.",
     "PR #48 cherry-picked without conflicts. Its private preparation-data changes compose with the image-scan and permalink-regexp changes; no additional production edits were needed.",
-    "PR #49 cherry-picked without conflicts. Only its three cache files differ from the ten-contribution source, and they are byte-identical to the standalone contribution. No extra production edits."
+    "PR #49 cherry-picked without conflicts. Only its three cache files differ from the ten-contribution source, and they are byte-identical to the standalone contribution. No extra production edits.",
+    "PR #50 cherry-picked without conflicts. Its patch index hashes and hunk line numbers reflect the already-modified integration file; removing only those format fields yields a byte-identical patch. The full declaration union matches, with no extra production edits."
   ],
   "limits": [
     "Selected race suites are not the entire repository test suite.",
@@ -17,9 +18,9 @@
     "Frontend JavaScript/browser flows remain untested. Earlier webpack warnings include three missing MUI exports."
   ],
   "status": "passed",
-  "scope": "Combined verification of eleven submitted performance contributions, PRs #39 through #49, over the original 38-patch Mattermax stack. Fork-only checkpoint; no additional upstream PR.",
-  "source_workspace_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6",
-  "source_tree_sha": "d550e64b4437c5af66dd6dfd339844fde8dc2668",
+  "scope": "Combined verification of twelve performance contributions, PRs #39 through #50, over the original 38-patch stack. Fork-only checkpoint; no extra upstream PR.",
+  "source_workspace_sha": "92adb629baea5053dfe5d718d110d78a496a2c73",
+  "source_tree_sha": "9cb04b8a00bef573f1ccbc60bdddee79fa7adfb0",
   "go_work": "go 1.26.10\n\nuse (\n\t.\n\t./public\n)\n",
   "contributions": [
     {
@@ -65,47 +66,51 @@
     {
       "pr": 49,
       "url": "https://github.com/opnlabs/mattermax/pull/49"
+    },
+    {
+      "pr": 50,
+      "url": "https://github.com/opnlabs/mattermax/pull/50"
     }
   ],
   "tests": [
     {
-      "name": "integration-eleven-app-race",
+      "name": "integration-twelve-app-race",
       "package": "app",
-      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback)$' -count=1 -timeout=20m -json",
-      "source_workspace_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6",
+      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback|TestFirstAutolinkPrecheck)$' -count=1 -timeout=20m -json",
+      "source_workspace_sha": "92adb629baea5053dfe5d718d110d78a496a2c73",
       "status": "passed",
       "counts": {
-        "pass": 198,
+        "pass": 273,
         "fail": 0,
         "skip": 0
       },
-      "private_log_sha256": "fa7cdb6227c83ac7ac5764cf8839cf2b2e2bf2abc702fb473188734e757588da"
+      "private_log_sha256": "f1475b46d29b831baa5d8c6042049dc8602762059591a4db66750d462c6db6d5"
     },
     {
-      "name": "integration-eleven-api4-race",
+      "name": "integration-twelve-api4-race",
       "package": "api4",
-      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback)$' -count=1 -timeout=20m -json",
-      "source_workspace_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6",
+      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback|TestFirstAutolinkPrecheck)$' -count=1 -timeout=20m -json",
+      "source_workspace_sha": "92adb629baea5053dfe5d718d110d78a496a2c73",
       "status": "passed",
       "counts": {
         "pass": 96,
         "fail": 0,
         "skip": 0
       },
-      "private_log_sha256": "fa7cdb6227c83ac7ac5764cf8839cf2b2e2bf2abc702fb473188734e757588da"
+      "private_log_sha256": "f1475b46d29b831baa5d8c6042049dc8602762059591a4db66750d462c6db6d5"
     },
     {
-      "name": "integration-eleven-localcachelayer-race",
+      "name": "integration-twelve-localcachelayer-race",
       "package": "localcachelayer",
-      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback)$' -count=1 -timeout=20m -json",
-      "source_workspace_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6",
+      "command": "go test -race -p 2 ./channels/app ./channels/api4 ./channels/store/localcachelayer -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction|TestReactionStore|TestReactionStoreCache|TestReactionBulkCache|TestReactionCacheDecode|TestReactionCacheProviders|TestReactionCacheDecodeFallback|TestFirstAutolinkPrecheck)$' -count=1 -timeout=20m -json",
+      "source_workspace_sha": "92adb629baea5053dfe5d718d110d78a496a2c73",
       "status": "passed",
       "counts": {
         "pass": 37,
         "fail": 0,
         "skip": 0
       },
-      "private_log_sha256": "fa7cdb6227c83ac7ac5764cf8839cf2b2e2bf2abc702fb473188734e757588da"
+      "private_log_sha256": "f1475b46d29b831baa5d8c6042049dc8602762059591a4db66750d462c6db6d5"
     }
   ],
   "retained_tests": [
@@ -136,39 +141,40 @@
       "source_workspace_sha": "886db02677e9bc04e3ce81aebe567c478b6adccb"
     }
   ],
-  "total_fresh_pass_events": 331,
+  "total_fresh_pass_events": 406,
   "retained_pass_events": 362,
   "counting": "Go parent and subtest pass events, excluding package summaries. Fresh and retained results are separate; retained results keep their original revision and scope.",
   "declaration_integrity": {
-    "contributed_declaration_changes": 86,
-    "declarations_verified": 2914,
-    "files": 31,
+    "contributed_declaration_changes": 95,
+    "declarations_verified": 2922,
+    "files": 32,
     "mismatches": null,
-    "scope": "All non-import top-level Go declarations in the files changed by the eleven contributions. Expected state is the union of their independent declaration deltas over the shared base. Imports were merged and typechecked separately.",
+    "scope": "All non-import top-level Go declarations in the files changed by the twelve contributions. Expected state is the union of their independent declaration deltas over the shared base. Imports were merged and typechecked separately.",
     "status": "passed",
     "negative_control": {
       "status": "passed",
-      "method": "Checker rejected an unexpected declaration in a temporary copy. Source workspace unchanged.",
+      "method": "Checker rejected an unexpected declaration in a temporary copy. Source workspace untouched.",
       "detected_mismatches": [
-        "server/channels/store/localcachelayer/reaction_cache_test.go:unexpected func:integrationElevenSentinel"
+        "server/channels/app/post_autolink_precheck_test.go:unexpected func:integrationTwelveSentinel"
       ]
     },
-    "tool_sha256": "d4cbe3162c281a9c064a4d64a34300fb2bb82c37cf3c076b8b14f1c28d4842ea"
+    "tool_sha256": "d9af542e36d940cdbe878fe7d8a5185455b54fa1b7ae8abf36eb73ca0dfe9355"
   },
   "patch_integrity": {
     "status": "passed",
     "base": "d2b07cc3f7c3200349e32ca167a39bdc85255baf",
     "original_patch_files_verified_byte_identical": 38,
-    "new_performance_patches": 11,
-    "combined_series": 49,
-    "source_workspace_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6",
-    "previous_patch_files_verified_byte_identical": 48,
-    "new_patch_byte_identical_to_standalone": true
+    "new_performance_patches": 12,
+    "combined_series": 50,
+    "source_workspace_sha": "92adb629baea5053dfe5d718d110d78a496a2c73",
+    "previous_patch_files_verified_byte_identical": 49,
+    "new_patch_byte_identical_to_standalone": false,
+    "new_patch_changes_only_index_hashes_and_hunk_positions": true
   },
   "retained_store_code_integrity": {
     "status": "passed",
     "tested_source_sha": "886db02677e9bc04e3ce81aebe567c478b6adccb",
-    "current_source_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6",
+    "current_source_sha": "92adb629baea5053dfe5d718d110d78a496a2c73",
     "unchanged_paths": [
       "server/channels/store/sqlstore",
       "server/public",
@@ -180,36 +186,36 @@
   },
   "backend_build": {
     "status": "passed",
-    "source_workspace_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6",
-    "build_tags": "production",
-    "binary_sha256": "72299000abd24f7bbc2361caed95892f9135258093cf0bcaed49fa37734e5a14",
-    "forbidden_build_tags": false,
-    "enterprise_symbols_found": false,
-    "build_enterprise_ready": "false",
-    "build_number": "12.0.2-1.integration-eleven",
-    "build_hash": "01ef41bb3328ac8e3113309aec218564826fc3b6",
-    "scope": "Public server command, no branded frontend/package rebuild at this revision.",
+    "source_workspace_sha": "92adb629baea5053dfe5d718d110d78a496a2c73",
     "command": [
       "go",
       "build",
       "-tags",
       "production",
       "-ldflags",
-      "-X github.com/mattermost/mattermost/server/public/model.BuildNumber=12.0.2-1.integration-eleven -X github.com/mattermost/mattermost/server/public/model.BuildHash=01ef41bb3328ac8e3113309aec218564826fc3b6 -X github.com/mattermost/mattermost/server/public/model.BuildEnterpriseReady=false",
+      "-X github.com/mattermost/mattermost/server/public/model.BuildNumber=12.0.2-1.integration-twelve -X github.com/mattermost/mattermost/server/public/model.BuildHash=92adb629baea5053dfe5d718d110d78a496a2c73 -X github.com/mattermost/mattermost/server/public/model.BuildEnterpriseReady=false",
       "-o",
-      "/tmp/mattermax-integrated-eleven-server",
+      "/tmp/mattermax-integrated-twelve-server",
       "./cmd/mattermost"
     ],
     "environment": {
       "GOFLAGS": "-p=2 -buildvcs=false",
-      "GOMAXPROCS": "4",
-      "symbol_tool": "Matching SDK standard cmd/nm through temporary GOROOT, same tag/symbol gates as the release script."
-    }
+      "GOMAXPROCS": "4"
+    },
+    "build_tags": "production",
+    "binary_sha256": "77d07d5c7fbcbfb5ea127d399376304da7b2ff02ab226fdfd2334965d5e5711f",
+    "forbidden_build_tags": false,
+    "enterprise_symbols_found": false,
+    "build_enterprise_ready": "false",
+    "build_number": "12.0.2-1.integration-twelve",
+    "build_hash": "92adb629baea5053dfe5d718d110d78a496a2c73",
+    "scope": "Public backend only; no branded frontend/package rebuild.",
+    "symbol_tool": "Matching standard SDK cmd/nm via temporary GOROOT, same exclusion gates as scripts/build-release.sh."
   },
   "runtime_smoke": {
     "status": "passed",
-    "database": "mm_eleven_399d7e676bec",
-    "runtime_directory": "/tmp/mattermax-eleven-smoke-izqhnv_8",
+    "database": "mm_twelve_6c8e2265570a",
+    "runtime_directory": "/tmp/mattermax-twelve-smoke-9te7i5qb",
     "database_removed": true,
     "server_stopped": true,
     "probes": [
@@ -233,22 +239,22 @@
       }
     ],
     "base_url": "http://127.0.0.1:18065",
-    "binary": "/tmp/mattermax-integrated-eleven-server",
+    "binary": "/tmp/mattermax-integrated-twelve-server",
     "environment": "Allowlisted system variables only; configuration comes from the temporary file plus repository overlay.",
-    "verified_build_number": "12.0.2-1.integration-eleven",
+    "verified_build_number": "12.0.2-1.integration-twelve",
     "runtime_directory_removed": true,
-    "source_workspace_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6"
+    "source_workspace_sha": "92adb629baea5053dfe5d718d110d78a496a2c73"
   },
   "patch_check": {
     "command": "just check",
     "status": "passed",
-    "patches": 49,
-    "private_log_sha256": "330a8756589c31fee28a91b9028340413a33160b9a94ab30cd82efd18c49b6a4"
+    "patches": 50,
+    "private_log_sha256": "1ca8fedbbb2891ed93898132b98b41a34d68743bd41d1362a71ac81dcf15a551"
   },
   "ordered_benchmark_smoke": {
     "status": "passed",
-    "source_workspace_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6",
-    "cases": 28,
+    "source_workspace_sha": "92adb629baea5053dfe5d718d110d78a496a2c73",
+    "cases": 46,
     "case_names": [
       "BenchmarkAttachmentHistory/posts=1/files=2/cold",
       "BenchmarkAttachmentHistory/posts=1/files=2/warm",
@@ -264,6 +270,24 @@
       "BenchmarkPermalinkHistory/subpath_image",
       "BenchmarkPermalinkHistory/same_site_link",
       "BenchmarkPermalinkHistory/permalink",
+      "BenchmarkFirstAutolinkPrecheck/plain",
+      "BenchmarkFirstAutolinkPrecheck/prose",
+      "BenchmarkFirstAutolinkPrecheck/formatting",
+      "BenchmarkFirstAutolinkPrecheck/colon_control",
+      "BenchmarkFirstAutolinkPrecheck/http_control",
+      "BenchmarkFirstAutolinkPrecheck/www_control",
+      "BenchmarkAutolinkPrecheckHistory/plain/posts=1",
+      "BenchmarkAutolinkPrecheckHistory/plain/posts=60",
+      "BenchmarkAutolinkPrecheckHistory/prose/posts=1",
+      "BenchmarkAutolinkPrecheckHistory/prose/posts=60",
+      "BenchmarkAutolinkPrecheckHistory/formatting/posts=1",
+      "BenchmarkAutolinkPrecheckHistory/formatting/posts=60",
+      "BenchmarkAutolinkPrecheckHistory/colon_control/posts=1",
+      "BenchmarkAutolinkPrecheckHistory/colon_control/posts=60",
+      "BenchmarkAutolinkPrecheckHistory/http_control/posts=1",
+      "BenchmarkAutolinkPrecheckHistory/http_control/posts=60",
+      "BenchmarkAutolinkPrecheckHistory/www_control/posts=1",
+      "BenchmarkAutolinkPrecheckHistory/www_control/posts=60",
       "BenchmarkMarkdownImageHistory/short",
       "BenchmarkMarkdownImageHistory/prose",
       "BenchmarkMarkdownImageHistory/formatting",
@@ -279,9 +303,9 @@
       "BenchmarkReactionCacheRead/posts=1",
       "BenchmarkReactionCacheRead/posts=60"
     ],
-    "command": "go test -p 1 ./channels/app ./channels/store/localcachelayer -run '^$' -bench '^(BenchmarkReactionHistory|BenchmarkMarkdownImageHistory|BenchmarkPermalinkHistory|BenchmarkAttachmentHistory|BenchmarkReactionCacheRead)$' -benchtime=1x -count=1 -timeout=10m -json",
+    "command": "go test -p 1 ./channels/app ./channels/store/localcachelayer -run '^$' -bench '^(BenchmarkReactionHistory|BenchmarkMarkdownImageHistory|BenchmarkPermalinkHistory|BenchmarkAttachmentHistory|BenchmarkReactionCacheRead|BenchmarkFirstAutolinkPrecheck|BenchmarkAutolinkPrecheckHistory)$' -benchtime=1x -count=1 -timeout=10m -json",
     "scope": "Single-iteration execution/output checks only. These timings are not performance evidence.",
-    "private_log_sha256": "5c0cdd5f9d94905849592acf088d6c1a04a75b5513f19bd37f0e96ee1396c52e"
+    "private_log_sha256": "08bdc0cb524f258671ff07b593db4bf34c905bf5cf452fb3815fe6af7862a9aa"
   },
   "earlier_benchmark_fixture_correction": {
     "status": "passed",
@@ -296,7 +320,7 @@
     "note": "Only benchmark functions changed: populate PostList.Order and check returned order length. Earlier race checks retain their original source scope; ordered benchmark smoke and backend build/smoke are refreshed separately.",
     "measurement_error": "AddPost populates Posts but not Order. The earlier benchmark fixtures omitted Order and skipped priority/acknowledgement reads; corrected reports supersede those timings."
   },
-  "test_scope_note": "Fresh app/API/reaction-cache checks cover the current combined source. Earlier file-info SQL/cache and broad store/cache checks retain their exact tested revisions. Earlier cache checks are historical because reaction caching changed. Standalone benchmark ratios are not combined throughput measurements.",
+  "test_scope_note": "Fresh app/API/reaction-cache race suites cover current combined source, including autolink syntax/size compatibility. Earlier verification reports are linked at immutable revisions; retained historical store/cache checks keep their original scopes. Standalone benchmarks are not combined throughput measurements.",
   "full_release_build": {
     "status": "passed",
     "release": "12.0.2-1.integration.b99123a",
@@ -423,139 +447,38 @@
     "verified_build_number": "12.0.2-1.integration.b99123a",
     "source_workspace_sha": "d4194a4b4157079253d5852e19304274574f8462"
   },
-  "previous_revision_tests": [
-    {
-      "name": "integration-ten-app-race",
-      "package": "app",
-      "command": "go test -race -p 2 ./channels/app ./channels/api4 -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction)$' -count=1 -timeout=20m -json",
-      "source_workspace_sha": "d4194a4b4157079253d5852e19304274574f8462",
-      "status": "passed",
-      "counts": {
-        "pass": 198,
-        "fail": 0,
-        "skip": 0
-      },
-      "private_log_sha256": "862f9b73cdf9d8c00a5bab3cfb696eb88e976225ad18e1650074106d37e7ae66"
-    },
-    {
-      "name": "integration-ten-api4-race",
-      "package": "api4",
-      "command": "go test -race -p 2 ./channels/app ./channels/api4 -run '^(TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPrepareReactionHistory|TestReactionHistoryHiddenAndEmpty|TestSaveReactionForPost|TestDeleteReactionForPost|TestMarkdownImageScanSyntax|TestGetFirstLink|TestPermalinkPathBoundaries|TestLooksLikeAPermalink|TestContainsPermalink|TestAttachmentHistoryBatch|TestAttachmentHistorySharedFileIsolation|TestAttachmentHistoryRetries|TestAttachmentHistoryBoundedReads|TestAttachmentHistoryContentLimit|TestGetPostsForChannel|TestGetPostThread|TestGetPostsByIds|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|TestGetFileInfosForPost|TestGetFileInfo|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetReactions|TestSaveReaction|TestDeleteReaction)$' -count=1 -timeout=20m -json",
-      "source_workspace_sha": "d4194a4b4157079253d5852e19304274574f8462",
-      "status": "passed",
-      "counts": {
-        "pass": 96,
-        "fail": 0,
-        "skip": 0
-      },
-      "private_log_sha256": "862f9b73cdf9d8c00a5bab3cfb696eb88e976225ad18e1650074106d37e7ae66"
-    },
-    {
-      "name": "integration-ten-sqlstore-race",
-      "package": "sqlstore",
-      "command": "go test -race -p 2 ./channels/store/sqlstore ./channels/store/localcachelayer -run '^(TestFileInfoStore|TestFileInfoStoreCache)$' -count=1 -timeout=15m -json",
-      "source_workspace_sha": "d4194a4b4157079253d5852e19304274574f8462",
-      "status": "passed",
-      "counts": {
-        "pass": 57,
-        "fail": 0,
-        "skip": 0
-      },
-      "private_log_sha256": "af6882c00e2ef05ceb10c124d38ace3e8cbfcb6657b8967f0997f460e8bd4f59"
-    },
-    {
-      "name": "integration-ten-localcachelayer-race",
-      "package": "localcachelayer",
-      "command": "go test -race -p 2 ./channels/store/sqlstore ./channels/store/localcachelayer -run '^(TestFileInfoStore|TestFileInfoStoreCache)$' -count=1 -timeout=15m -json",
-      "source_workspace_sha": "d4194a4b4157079253d5852e19304274574f8462",
-      "status": "passed",
-      "counts": {
-        "pass": 62,
-        "fail": 0,
-        "skip": 0
-      },
-      "private_log_sha256": "af6882c00e2ef05ceb10c124d38ace3e8cbfcb6657b8967f0997f460e8bd4f59"
-    }
-  ],
-  "previous_revision_pass_events": 413,
   "incremental_code_integrity": {
     "status": "passed",
-    "source_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6",
-    "previous_source_sha": "d4194a4b4157079253d5852e19304274574f8462",
+    "source_sha": "92adb629baea5053dfe5d718d110d78a496a2c73",
+    "previous_source_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6",
     "only_changed_source_paths": [
-      "server/channels/store/localcachelayer/reaction_cache.go",
-      "server/channels/store/localcachelayer/reaction_cache_test.go",
-      "server/channels/store/localcachelayer/reaction_layer.go"
+      "server/channels/app/post_autolink_precheck_test.go",
+      "server/channels/app/post_metadata.go"
     ],
-    "new_files_byte_identical_to_standalone": true,
-    "previous_patch_files_byte_identical": 48,
-    "new_patch_byte_identical_to_standalone": true
-  },
-  "previous_backend_build": {
-    "status": "passed",
-    "workspace_sha": "d4194a4b4157079253d5852e19304274574f8462",
-    "binary": "/tmp/mattermax-integrated-server",
-    "sha256": "523ac64f9e7ab1d87b48d3ef027bbee5c6a3deab20ffe0099774b81d7bb282e2",
-    "command": [
-      "go",
-      "build",
-      "-p",
-      "2",
-      "-ldflags",
-      "-X github.com/mattermost/mattermost/server/public/model.BuildNumber=12.0.2-1.integration -X github.com/mattermost/mattermost/server/public/model.BuildHash=d4194a4b4157079253d5852e19304274574f8462 -X github.com/mattermost/mattermost/server/public/model.BuildEnterpriseReady=false",
-      "-o",
-      "/tmp/mattermax-integrated-server",
-      "./cmd/mattermost"
+    "new_test_file_byte_identical_to_standalone": true,
+    "previous_patch_files_byte_identical": 49,
+    "new_patch_byte_identical_to_standalone": false,
+    "new_patch_differences": [
+      "Git index hashes and hunk line numbers reflect the already-modified integration file."
     ],
-    "build_tags_forbidden": false,
-    "enterprise_symbols_found": false,
-    "build_number": "12.0.2-1.integration",
-    "build_enterprise_ready": "false",
-    "symbol_tool": {
-      "path": "/tmp/mattermax-go-tools/nm",
-      "source": "Matching SDK cmd/nm, built locally because the installed SDK omitted the executable.",
-      "go_version": "go1.26.10"
-    },
-    "scope": "Public backend command built directly; full branded frontend/package workflow not run."
-  },
-  "previous_runtime_smoke": {
-    "status": "passed",
-    "database": "mm_integration_8d9f28e78e8d",
-    "runtime_directory": "/tmp/mattermax-integration-smoke-r19vnjr1",
-    "database_removed": true,
-    "server_stopped": true,
-    "probes": [
-      {
-        "path": "/api/v4/system/ping",
-        "http_status": 200,
-        "response": {
-          "ActiveSearchBackend": "database",
-          "AndroidLatestVersion": "",
-          "AndroidMinVersion": "",
-          "IosLatestVersion": "",
-          "IosMinVersion": "",
-          "status": "OK"
-        }
-      },
-      {
-        "path": "/api/v4/config/client?format=old",
-        "http_status": 200,
-        "site_name": "Mattermax",
-        "version": "12.0.2"
-      }
-    ],
-    "base_url": "http://127.0.0.1:18065",
-    "binary": "/tmp/mattermax-integrated-server",
-    "environment": "Allowlisted system variables only; configuration comes from the temporary file plus repository overlay.",
-    "runtime_directory_removed": true
+    "patch_after_removing_only_index_and_hunk_positions_byte_identical": true,
+    "normalized_patch_sha256": "b981ee43b0832c148e2d4b367cae8718033b8f68dda8f9c22020cffccdbc38bc"
   },
   "full_release_scope_note": "Full branded packaging and asset-delivery smoke remain scoped to d4194a4b, the ten-contribution revision. No current-revision full packaging claim. Source webapp, root branding, overlay and release scripts are unchanged; the new backend is built and checked separately.",
-  "previous_ordered_benchmark_smoke": {
-    "status": "passed",
-    "source_workspace_sha": "d4194a4b4157079253d5852e19304274574f8462",
-    "cases": 26,
-    "command": "go test ./channels/app -run '^$' -bench '^(BenchmarkReactionHistory|BenchmarkMarkdownImageHistory|BenchmarkPermalinkHistory|BenchmarkAttachmentHistory)$' -benchtime=1x -count=1 -timeout=10m -json",
-    "private_log_sha256": "ca676e93fd40b8fb5a359521f07069a9b72f148ef8b4dfb7ee2f276e8ed3012d",
-    "scope": "Single-iteration execution/output checks only. These timings are not performance evidence."
-  }
+  "historical_verification_reports": [
+    {
+      "root_sha": "1ffed974443d0ea6e1f14b49c829d40b33b106fd",
+      "source_workspace_sha": "d4194a4b4157079253d5852e19304274574f8462",
+      "fresh_pass_events": 413,
+      "report_url": "https://github.com/rhnvrm/mattermax/blob/1ffed974443d0ea6e1f14b49c829d40b33b106fd/docs/verification/performance-series/report.json",
+      "scope": "Earlier verification report. Its tests/builds/smokes retain their exact original revision and are not relabeled current."
+    },
+    {
+      "root_sha": "05cf63f3ba1a5556b47e9f0ba477dbbf94841ac8",
+      "source_workspace_sha": "01ef41bb3328ac8e3113309aec218564826fc3b6",
+      "fresh_pass_events": 331,
+      "report_url": "https://github.com/rhnvrm/mattermax/blob/05cf63f3ba1a5556b47e9f0ba477dbbf94841ac8/docs/verification/performance-series/report.json",
+      "scope": "Earlier verification report. Its tests/builds/smokes retain their exact original revision and are not relabeled current."
+    }
+  ]
 }

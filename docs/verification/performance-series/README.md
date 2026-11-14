@@ -1,34 +1,37 @@
 # Combined performance contribution verification
 
-This checkpoint combines PRs #39 through #49 over the original 38 Mattermax
-patches. All 49 patches apply cleanly to pinned v12.0.2. The original patches
+This checkpoint combines PRs #39 through #50 over the original 38 Mattermax
+patches. All 50 patches apply cleanly to pinned v12.0.2. The original patches
 retain their authorship, including Karan Sharma's (@mr-karan) feature work.
 This fork-only branch adds no upstream PR.
 
-PR #49 integrates without conflicts. All 48 earlier patch files remain
-byte-identical, and the new patch matches its standalone PR. Only three cache
-files differ from the ten-contribution source; those files match PR #49
-exactly. No extra production edits were needed.
+PR #50 integrates without conflicts. All 49 earlier patch files remain
+byte-identical. The new patch differs from its standalone PR only in Git index
+hashes and hunk line numbers, reflecting the integration file's earlier changes.
+Removing only those format fields yields a byte-identical patch. Only
+post_metadata.go and the new test file differ from the eleven-contribution
+source. No extra production edits were needed.
 
-The declaration comparison matches 2,914 non-import Go declarations across
-31 files. Its negative control rejects an unexpected declaration in a
+The declaration comparison matches 2,922 non-import Go declarations across
+32 files. Its negative control rejects an unexpected declaration in a
 temporary copy. [report.json](report.json) records source/tree hashes,
 commands, test scopes, build checks and startup probes.
 
-Fresh app/API/reaction-cache race suites passed 331 parent/subtest events
-with no failures or skips (app: 198, api4: 96, localcachelayer:
-37). They cover reaction decoding and invalidation, actual Redis/LRU
+Fresh app/API/reaction-cache race suites passed 406 parent/subtest events
+with no failures or skips (app: 273, api4: 96, localcachelayer: 37). They cover reaction decoding and invalidation, actual Redis/LRU
 compatibility and isolation, post preparation, receipts, file ordering and
 policy filtering, shared metadata isolation, content limits, preview retries,
-burn-on-read resets, image/proxy handling and permalink previews.
+burn-on-read resets, image/proxy handling and permalink previews. Autolink
+checks compare both returned links and existing malformed-input panic outcomes;
+the shared Markdown parser remains unchanged.
 
-Earlier file-info SQL/cache checks and broader store/cache runs remain listed
-at their original tested revisions. SQL store code and public/platform
-dependencies are byte-identical. Reaction cache code changed in PR #49;
+Earlier file-info SQL/cache checks and broader store/cache runs remain
+available in immutable historical report links at their tested revisions.
+SQL store code and public/platform dependencies are byte-identical. Reaction cache code changed in PR #49;
 earlier cache runs are historical and the current cache suite is fresh.
 The report does not relabel old runs or add their counts to the current run.
 
-All 28 benchmark cases pass single-iteration execution/output checks.
+All 46 benchmark cases pass single-iteration execution/output checks.
 These timings support no performance claim. The ordered fixtures include and
 validate PostList.Order, including priority and acknowledgement reads.
 Standalone paired timing reports remain scoped to their recorded PR sources;
