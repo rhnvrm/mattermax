@@ -9,7 +9,7 @@
     "PR #48 cherry-picked without conflicts. Its private preparation-data changes compose with the image-scan and permalink-regexp changes; no additional production edits were needed."
   ],
   "limits": [
-    "Full branded frontend/packaging workflow not run.",
+    "Frontend compiles with 77 webpack warnings, including three missing MUI exports. Browser execution and full UI flows are untested.",
     "Selected race suites are not the entire repository test suite.",
     "Runtime smoke covers startup, ping and anonymous client config only.",
     "Individual PR benchmarks remain measurements of their recorded standalone code; they are not combined-stack throughput measurements."
@@ -267,5 +267,130 @@
     "note": "Only benchmark functions changed: populate PostList.Order and check returned order length. Earlier race checks retain their original source scope; ordered benchmark smoke and backend build/smoke are refreshed separately.",
     "measurement_error": "AddPost populates Posts but not Order. The earlier benchmark fixtures omitted Order and skipped priority/acknowledgement reads; corrected reports supersede those timings."
   },
-  "test_scope_note": "Fresh app/API and file-info store/cache results cover the current combined source. Earlier broader store/cache results are retained separately because their implementation and public/platform dependencies are byte-identical. Standalone benchmark ratios are not combined-stack throughput measurements."
+  "test_scope_note": "Fresh app/API and file-info store/cache results cover the current combined source. Earlier broader store/cache results are retained separately because their implementation and public/platform dependencies are byte-identical. Standalone benchmark ratios are not combined-stack throughput measurements.",
+  "full_release_build": {
+    "status": "passed",
+    "release": "12.0.2-1.integration.b99123a",
+    "root_sha": "b99123a6ce93a2fb2ee5523cbcf60a63b2ca0bc8",
+    "source_workspace_sha": "d4194a4b4157079253d5852e19304274574f8462",
+    "command": "just build",
+    "script_unchanged": true,
+    "enterprise_checks": "Both executables checked by unchanged scripts/build-release.sh build-info and go tool nm gates.",
+    "artifacts": [
+      {
+        "name": "mattermax-12.0.2-1.integration.b99123a-source.tar.gz",
+        "bytes": 315780573,
+        "sha256": "412754a717a46d3c734233e56aea3333f8d267ee798dbb17f6ddaaf692b56691"
+      },
+      {
+        "name": "mattermax-12.0.2-1.integration.b99123a-linux-amd64.tar.gz",
+        "bytes": 186661658,
+        "sha256": "204510ba53be3daa85d2a8fa9995d13c1ad5b730ed8e8eac13f928d6fb45ed45"
+      }
+    ],
+    "toolchain": {
+      "goroot": "/tmp/mattermax-release-goroot",
+      "sdk": "/nix/store/fkz7zn1a0yiryf9kri2yh1s12k1sv557-go-1.26.10/share/go",
+      "nm": "Matching SDK standard cmd/nm, exposed through go tool nm in a temporary toolchain tree.",
+      "node": "v24.11.1",
+      "npm": "11.6.2"
+    },
+    "source_checksum_verified": true,
+    "source_archive": {
+      "enterprise_directory_absent": true,
+      "git_metadata_absent": true,
+      "patches_verified": 48,
+      "members": 18313
+    },
+    "binaries": [
+      {
+        "name": "mattermax",
+        "sha256": "d8e5de4f7ae11c3083bf308d62a6745ad0e5b86163e35978198a24c896bdd48c",
+        "build_tags": [
+          "build\t-tags=production"
+        ]
+      },
+      {
+        "name": "mmctl",
+        "sha256": "9f30fc529acd6df4d143ab43da847c29f0c0300b78afc7f4c44bc88c53423b32",
+        "build_tags": [
+          "build\t-tags=production"
+        ]
+      }
+    ],
+    "branding_report_sha256": "1d7264e6a9944efdae2b24cb742f931262db674e234727731c08114ab5dba507",
+    "build_log_sha256": "1d61cb364d6086366f6d673c89bd0356dd263d9e6fda751104656dbde5308bff",
+    "frontend": {
+      "status": "compiled",
+      "webpack_warnings": 77,
+      "warning_categories": [
+        "Three @mui/system imports of internal_serializeStyles are absent from @mui/styled-engine.",
+        "Sass deprecations, CSS ordering conflicts and asset size warnings."
+      ],
+      "other_diagnostics": [
+        "Redux postbuild reports a missing index.d.ts copy, but exits zero."
+      ],
+      "limits": [
+        "HTTP smoke verifies asset delivery, not JavaScript execution or full browser flows.",
+        "The missing MUI export warnings need separate frontend investigation."
+      ]
+    },
+    "build_environment": {
+      "GOFLAGS": "-p=2 -buildvcs=false",
+      "GOMAXPROCS": "4",
+      "GOPROXY": "https://proxy.golang.org,direct",
+      "NODE_OPTIONS": "--max-old-space-size=8192",
+      "CI": "true (set by the unchanged release script)",
+      "npm_install": "npm ci --include=dev"
+    }
+  },
+  "packaged_runtime_smoke": {
+    "status": "passed",
+    "database_removed": true,
+    "server_stopped": true,
+    "probes": [
+      {
+        "path": "/api/v4/system/ping",
+        "http_status": 200,
+        "response": {
+          "ActiveSearchBackend": "database",
+          "AndroidLatestVersion": "",
+          "AndroidMinVersion": "",
+          "IosLatestVersion": "",
+          "IosMinVersion": "",
+          "status": "OK"
+        }
+      },
+      {
+        "path": "/api/v4/config/client?format=old",
+        "http_status": 200,
+        "site_name": "Mattermax",
+        "version": "12.0.2"
+      },
+      {
+        "path": "/static/main.9ac065302b64775d4497.js",
+        "http_status": 200,
+        "bytes": 19226,
+        "sha256": "3f6d89d647ebc6da2a9861209e7e0809d680279a834bb1c02f26e1f7758e9516"
+      },
+      {
+        "path": "/static/remote_entry.js?bt=1794653976189",
+        "http_status": 200,
+        "bytes": 19675,
+        "sha256": "0303e30ee0c6952d8e7fe1c99bfe71460d398063dc514a840310301b5264425c"
+      },
+      {
+        "path": "/",
+        "http_status": 200,
+        "javascript_assets_checked": 2
+      }
+    ],
+    "packaged_overlay_verified": true,
+    "base_url": "http://127.0.0.1:18065",
+    "binary": "/home/rhnvrm/Documents/Code/inbox/mattermax-upstream/work/build/dist/mattermax/bin/mattermax",
+    "environment": "Allowlisted system variables only; configuration comes from the temporary file plus repository overlay.",
+    "runtime_directory_removed": true,
+    "scope": "Packaged executable and assets, loopback-only disposable PostgreSQL database, HTTP API/root/JavaScript delivery. JavaScript is not executed in a browser.",
+    "verified_build_number": "12.0.2-1.integration.b99123a"
+  }
 }

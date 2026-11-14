@@ -67,7 +67,31 @@ build its standard tool with
 `GOWORK=off go build -o /tmp/mattermax-go-tools/nm cmd/nm` and use that executable.
 Failure to run or pass either check leaves enterprise exclusion unverified.
 
-The full branded frontend/packaging workflow remains untested. Selected suites
-do not establish complete API equivalence, and startup probes do not establish
-production capacity. Reproduce standalone benchmarks on their recorded PR
-branches; do not combine their speed ratios into a server-throughput claim.
+The full branded release build also passes using the unchanged `just build`
+workflow, Node 24.11.1, npm 11.6.2 and Go 1.26.10. Both packaged executables
+pass the script's tag and symbol checks. The branded translation check and
+settings overlay pass. The source checksum matches; all 48 archived patches
+match this branch, and the source archive contains no server/enterprise or Git
+metadata. The report records archive and executable SHA-256 hashes.
+
+The packaged server starts against another disposable database. Ping, client
+config, root HTML and its two initial JavaScript assets return HTTP 200. The
+client reports Mattermax 12.0.2 and the expected integration build number. The
+process, database and temporary asset copy are removed after the check.
+
+To repeat packaging, use Node ^24 and npm ^11, ensure `go tool nm` works, then
+run `MATTERMAX_RELEASE=12.0.2-1.integration.b99123a just build` from the root.
+The recorded build uses root b99123a6 and source d4194a4b; this documentation
+commit follows that build. No release tag or published release is created.
+
+Webpack reports 77 warnings, including three missing `internal_serializeStyles`
+exports from `@mui/styled-engine`, Sass deprecations, CSS ordering conflicts
+and asset-size warnings. Redux postbuild also reports a missing index.d.ts
+copy while exiting zero. HTTP checks establish asset delivery, not JavaScript
+execution. The MUI warnings need separate frontend investigation; full browser
+flows remain untested.
+
+Selected suites do not establish complete API equivalence, and startup probes
+do not establish production capacity. Reproduce standalone benchmarks on their
+recorded PR branches; do not combine their speed ratios into a
+server-throughput claim.
