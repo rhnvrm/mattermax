@@ -727,3 +727,14 @@ index cover the query when PostgreSQL visibility permits. Keep root deduplicatio
 query chunking, deletion filtering, missing-root counts and error handling. Add
 compatibility tests and real aggregate/Save/SaveMultiple benchmarks. No HTTP API,
 schema, index, configuration or third-party dependency changes.
+
+### emoji-name-scan.patch
+
+2026-11-15. Extract emoji names with a linear ASCII scan instead of allocating
+regular-expression matches in `getEmojiNamesForString`. Preserve the existing
+`:[a-zA-Z0-9_+-]+:` syntax, non-overlapping matches, order, duplicates and nil
+results. Post text extraction, reaction names, custom-emoji reads and API
+metadata remain unchanged. Includes regex-oracle equivalence and fuzz checks,
+plus helper, ordered history and balanced mixed-request benchmarks. The mixed
+benchmark records GC work and per-page preparation timings. No schema, settings,
+dependency or enterprise changes.
