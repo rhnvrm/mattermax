@@ -1,47 +1,45 @@
 # Combined performance contribution verification
 
-This checkpoint combines PRs #39 through #51 over the original 38 Mattermax
-patches. All 51 patches apply cleanly to pinned v12.0.2. The original patches
-retain their authorship, including Karan Sharma's (@mr-karan) feature work.
-This fork-only branch adds no upstream PR.
+This checkpoint combines PRs #39 through #52 over the original 38 Mattermax
+patches. All 52 patches apply cleanly to pinned v12.0.2. Existing patches retain
+their authorship, including Karan Sharma's (@mr-karan) feature work. This
+fork-only branch adds no upstream PR.
 
-PR #51 integrates without conflicts. All 50 earlier patch files remain
-byte-identical. The new patch and its four changed source files match the
-standalone contribution exactly. No extra production edits were needed.
+PR #52 integrates without conflicts. All 51 earlier patch files remain
+byte-identical. Its new test file matches the standalone contribution exactly.
+The new patch differs only in Git index hashes and hunk line positions; removing
+those format fields yields a byte-identical patch. No extra production edits
+were needed. The held emoji-name capacity experiment is excluded.
 
-The declaration comparison matches 2,946 non-import Go declarations across
-36 files. Its negative control rejects an unexpected declaration in a
-temporary copy. [report.json](report.json) records source/tree hashes,
-commands, test scopes, build checks and startup probes.
+The declaration comparison matches 2,950 non-import Go declarations across
+37 files. Its negative control rejects an added declaration in a temporary
+copy. [report.json](report.json) records source/tree hashes, commands, test
+scopes, build checks and startup probes.
 
-Fresh app/API/cache/priority-ack SQL race suites passed 501 parent/subtest events
-with no failures or skips (app: 283, api4: 107, localcachelayer:
-37, sqlstore: 74). They cover reaction decoding and invalidation, actual Redis/LRU
-compatibility and isolation, post preparation, receipts, file ordering and
-policy filtering, shared metadata isolation, content limits, preview retries,
-burn-on-read resets, image/proxy handling and permalink previews. Autolink
-checks compare both returned links and existing malformed-input panic outcomes;
-the shared Markdown parser remains unchanged.
+Fresh selected race suites passed 536 parent/subtest events with no
+failures or skips (app: 318, api4: 107, localcachelayer: 37, sqlstore: 74).
+They cover post preparation, link/image filtering, read receipts, attachment
+ordering and access policies, reactions/cache invalidation, priority and
+acknowledgement reads, and API history retrieval. New preview-filter tests
+characterize empty lists, malformed URLs, Unicode/IDNA, hostname extraction and
+existing substring matching. Autolink tests compare returned links and existing
+malformed-input panic outcomes; the shared Markdown parser remains unchanged.
 
-Earlier file-info SQL/cache checks and broader store/cache runs remain
-available in immutable historical report links. Public/platform dependencies
-are byte-identical. Reaction caching changed in PR #49 and priority/ack reads
-changed in PR #51, so earlier store/cache runs stay scoped to their original
-source. Fresh selected suites cover current cache and changed SQL paths,
-including batch boundaries, NULL fields and partial-error behavior. Historical
-counts are not added to the fresh run.
+Earlier broad SQL/cache checks remain available at immutable historical report
+links and keep their original revisions. PR #52 changes no store code;
+current selected store/cache suites are still run freshly. Historical counts
+are not added to this run.
 
-All 64 benchmark cases pass single-iteration execution/output checks.
-These timings support no performance claim. The ordered fixtures include and
-validate PostList.Order, including priority and acknowledgement reads.
-Standalone paired timing reports remain scoped to their recorded PR sources;
-they are not measurements of combined-stack throughput.
+All 80 benchmark cases pass single-iteration execution/output checks. These
+timings support no performance claim. Fixtures include and validate
+PostList.Order. Standalone paired timing reports remain scoped to their
+recorded PR sources; they are not combined-stack throughput measurements.
 
 The current public backend builds with the production tag, an explicit
 integration build number, source hash and BuildEnterpriseReady=false. Build
 info has no enterprise/sourceavailable tags; symbols contain no
 server/v8/enterprise path. The matching SDK's standard cmd/nm runs the same
-exclusion gates as the unchanged release script.
+exclusion criteria as the unchanged release script.
 
 A loopback-only instance loads the settings overlay and migrates a fresh
 PostgreSQL database. Ping and anonymous client config return HTTP 200,
@@ -52,41 +50,40 @@ Existing databases are untouched.
 
 ## Retained release packaging
 
-The full branded release build and packaged-asset HTTP smoke passed at the
-previous ten-contribution source d4194a4b, with root b99123a6. Those archive and
-executable hashes stay scoped to that source. The source archive contains all
-48 patches from that checkpoint and excludes server/enterprise and Git
-metadata. Both packaged executables pass the release script's tag/symbol
-checks; the translation and overlay checks pass. Root HTML and its initial
-JavaScript assets return HTTP 200 from the packaged server.
+Full branded packaging and packaged-asset HTTP smoke passed at the earlier
+ten-contribution source d4194a4b, with root b99123a6. Those archive and executable
+hashes remain scoped to that source. Its archive contains all 48 patches from
+that checkpoint and excludes server/enterprise and Git metadata. Both packaged
+executables pass the release script's tag/symbol checks; translation and overlay
+checks pass. Root HTML and its initial JavaScript assets return HTTP 200.
 
-Packaging has not been rerun with PRs #49 through #51. The webapp, branding,
-overlay and release scripts are unchanged; the new backend is built and checked separately.
-No release tag, deployment or published release is created.
+Full packaging has not been rerun with PRs #49 through #52. The webapp,
+branding, overlay and release scripts are unchanged; the current backend is
+built and checked separately. No release tag, deployment or published release
+is created.
 
-The earlier frontend build reports 77 webpack warnings, including three
-missing internal_serializeStyles exports from @mui/styled-engine, plus Sass,
-CSS ordering and asset-size warnings. Redux postbuild reports a missing
-index.d.ts copy while exiting zero. HTTP asset delivery does not establish
-JavaScript execution. MUI warnings and browser flows need separate frontend
-investigation.
+The earlier frontend build reports 77 webpack warnings, including three missing
+internal_serializeStyles exports from @mui/styled-engine, plus Sass, CSS ordering
+and asset-size warnings. Redux postbuild reports a missing index.d.ts copy while
+exiting zero. HTTP delivery does not establish JavaScript execution. Browser
+flows and the MUI warnings remain outside this verification.
 
 ## Reproduce
 
-Use Go 1.26.10 and disposable PostgreSQL/Redis test services. Set
+Use Go 1.26.10 and disposable PostgreSQL/Redis services. Set
 TEST_DATABASE_POSTGRESQL_DSN and TEST_REDIS_ADDR, then start from this branch:
 
 ```sh
 just workspace
 just check
 cd work/src/server
-make setup-go-work BUILD_NUMBER=12.0.2-1.integration-thirteen BUILD_ENTERPRISE=false BUILD_ENTERPRISE_READY=false BUILD_ENTERPRISE_DIR=/nonexistent
+make setup-go-work BUILD_NUMBER=12.0.2-1.integration-fourteen BUILD_ENTERPRISE=false BUILD_ENTERPRISE_READY=false BUILD_ENTERPRISE_DIR=/nonexistent
 ```
 
 Run the fresh race, benchmark-smoke and backend build commands in report.json
 from work/src/server. Use the recorded environment flags and only the server
 and public modules in go.work. Git-am commit IDs can differ; compare
-source_tree_sha and the recorded file hashes when reconstructing the code.
+source_tree_sha and file hashes when reconstructing the code.
 
 Apply scripts/build-release.sh's tag and symbol criteria. If nm is absent,
 build the matching standard SDK tool with

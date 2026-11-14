@@ -682,3 +682,11 @@ and paired store/ordered-history benchmarks with positive metadata checks.
 No new dependency, public API, schema or configuration change. Existing feature
 patches and author credits remain unchanged.
 [Measured results](docs/benchmarks/priority-ack-array-reads/README.md).
+
+### link-preview-domain-checks.patch
+
+2026-11-14. Parse a preview URL and convert its hostname to ASCII once per
+restricted-domain check, instead of once for every domain entry. Preserve the
+empty-list allow behavior, substring matching and existing warning/error paths.
+Adds edge-case tests and filtering/history benchmarks. Changes no API, schema,
+configuration or dependency.
