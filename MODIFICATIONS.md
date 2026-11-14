@@ -698,3 +698,13 @@ mention sums in one grouped query instead of two or three concurrent queries.
 Preserve channel-membership filtering, deleted/followed rules, zero-valued team
 groups and the urgent-feature toggle. Adds compatibility tests and serial/
 parallel SQL benchmarks. Changes no API, schema, configuration or dependency.
+
+### user-thread-count-aggregation.patch
+
+2026-11-14. Add an internal aggregate-count store method and use it for the user
+thread response, replacing up to four concurrent count queries with one. Keep
+individual getters for other callers. Preserve page/count flags, unread-total
+duplication, team/DM/deleted filters and the priority toggle. Copy only count
+fields so the concurrent page result is retained. Regenerate store adapters and
+mocks; add compatibility and real-data App benchmarks. No HTTP API, schema,
+configuration or dependency changes.

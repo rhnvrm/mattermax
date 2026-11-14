@@ -53,3 +53,4 @@ autolink-precheck.patch
 priority-ack-array-reads.patch
 link-preview-domain-checks.patch
 team-thread-unread-aggregation.patch
+user-thread-count-aggregation.patch
