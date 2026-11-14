@@ -646,3 +646,16 @@ shared metadata, content limits, hidden posts and preview retries, plus ordered
 cold/warm benchmarks. Builds on the post preparation helpers from PRs #43/#45.
 Existing patches and contributor credits remain unchanged.
 [Measured results](docs/benchmarks/attachment-history/README.md).
+
+### reaction-cache-decoding.patch
+
+2026-11-14. Uses the existing cache unmarshaler fast path to decode reaction
+records without reflection, for single-post and batched reads. Cache writes
+retain their existing format so older readers and shared Redis entries stay
+compatible. Preserves nil/empty results, nil elements, remote IDs, timestamp
+ranges, independent returned values, SQL fallback and invalidation. Unknown
+fields or malformed entries become cache misses. Adds format compatibility,
+Redis/LRU, isolation, truncation, fallback and differential fuzz checks, plus
+paired cache and ordered-history benchmarks. Existing feature patches and
+contributor credit remain unchanged.
+[Measured results](docs/benchmarks/reaction-cache-decoding/README.md).

@@ -48,3 +48,4 @@ reaction-history-batches.patch
 markdown-image-scan.patch
 permalink-regexp.patch
 history-file-metadata.patch
+reaction-cache-decoding.patch
