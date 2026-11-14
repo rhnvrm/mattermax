@@ -55,3 +55,4 @@ link-preview-domain-checks.patch
 team-thread-unread-aggregation.patch
 user-thread-count-aggregation.patch
 thread-unread-reply-index.patch
+reply-count-projection.patch
