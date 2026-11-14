@@ -1,0 +1,150 @@
+{
+  "status": "passed",
+  "scope": "Combined verification of six submitted performance contributions over the original 38-patch Mattermax stack. This is a local integration checkpoint, not a seventh upstream change.",
+  "base_patch_repository_sha": "d2b07cc3f7c3200349e32ca167a39bdc85255baf",
+  "pinned_upstream_sha": "13ae6c4cf1a8e73c35a4f0c8816a505506c7acdd",
+  "source_workspace_sha": "ca8670d5e6d0b748f61aaee5c654585a348dd283",
+  "source_tree_sha": "402f0fa86d5add88b0c24cd98c3774442f3cd8f7",
+  "go_work": "go 1.26.10\n\nuse (\n\t.\n\t./public\n)\n",
+  "contributions": [
+    {
+      "pr": 39,
+      "url": "https://github.com/opnlabs/mattermax/pull/39"
+    },
+    {
+      "pr": 40,
+      "url": "https://github.com/opnlabs/mattermax/pull/40"
+    },
+    {
+      "pr": 41,
+      "url": "https://github.com/opnlabs/mattermax/pull/41"
+    },
+    {
+      "pr": 42,
+      "url": "https://github.com/opnlabs/mattermax/pull/42"
+    },
+    {
+      "pr": 43,
+      "url": "https://github.com/opnlabs/mattermax/pull/43"
+    },
+    {
+      "pr": 44,
+      "url": "https://github.com/opnlabs/mattermax/pull/44"
+    }
+  ],
+  "merge_resolutions": [
+    "Combined the slowmode and activity-lookup tests in post_store_test.go and deduplicated their imports.",
+    "Retained both preference test/benchmark additions and merged cmp/slices/lib-pq imports.",
+    "Regenerated store layers/mocks; they matched the combined source without further changes."
+  ],
+  "declaration_integrity": {
+    "contributed_declaration_changes": 33,
+    "declarations_verified": 2710,
+    "files": 17,
+    "mismatches": null,
+    "scope": "All non-import top-level Go declarations in the files changed by the six contributions. Expected state is the union of their independent declaration deltas over the shared base. Imports are excluded and require the separate compile/test checks.",
+    "status": "passed"
+  },
+  "patch_integrity": {
+    "status": "passed",
+    "base": "d2b07cc3f7c3200349e32ca167a39bdc85255baf",
+    "original_patch_files_verified_byte_identical": 38,
+    "new_performance_patches": 6,
+    "combined_series": 44,
+    "source_workspace_sha": "ca8670d5e6d0b748f61aaee5c654585a348dd283"
+  },
+  "patch_check": {
+    "command": "just check",
+    "status": "passed",
+    "patches": 44
+  },
+  "tests": [
+    {
+      "name": "integration-store-race",
+      "command": "go test -race ./channels/store/sqlstore -run '^(TestPostStore|TestThreadStore|TestSlowmodeLastPostLookup|TestThreadLastActivityLookup|TestPreferenceStore|TestPreferenceBatchSave|TestPreferenceUsersLookup|TestDeleteUnusedFeatures|TestBulkInsertChunking)$' -count=1 -timeout=20m -json",
+      "status": "passed",
+      "counts": {
+        "pass": 301,
+        "fail": 0,
+        "skip": 0
+      },
+      "private_log_sha256": "71131488d853b8f132abf4498962626465ce83872527162f477f5ef6c7e0d73b"
+    },
+    {
+      "name": "integration-app-race",
+      "command": "go test -race ./channels/app -run '^(TestCheckThreadArchivedRootLookup|TestReadReceiptBulkInputs|TestPreparePostFilesReusesSuccessfulRead|TestMiniPreviewDispatch|TestPreparePostListForClient|TestPreparePostForClient|TestPreparePostForClientWithImageProxy|TestGetImagesForPost|TestSanitizePostMetadataForUser|TestPreparePostForClient_BurnOnReadSenderExpireAt|TestGetDraftsForUser|TestUploadFile|TestDoUploadFile)$' -count=1 -timeout=20m -json",
+      "status": "passed",
+      "counts": {
+        "pass": 110,
+        "fail": 0,
+        "skip": 0
+      },
+      "private_log_sha256": "d42fe125ff360ccb21e790473c76fce0bd10e9a003a6da678e3bfb9b58f304b1"
+    },
+    {
+      "name": "integration-api-race",
+      "command": "go test -race ./channels/api4 -run '^(TestChannelPostingRulesAPI|TestSlowmode|TestThreadAutoArchive|TestGetChannelReadReceiptsAPI|TestReadReceiptsPrefServerStamp|TestReadReceiptWebsocketEvent|TestGetFileInfosForPost|TestGetFileInfo|TestGetPostsByIdsFileMetadataABAC|TestGetEditHistoryForPostDoesNotLeakFilesDeniedByPolicy|TestFileMetadataServedWhenPolicyAllows|TestGetDraftsWithholdsThumbnailWhenPolicyDenies|TestGetScheduledPostsWithholdsThumbnailWhenPolicyDenies|Test.*Preference.*)$' -count=1 -timeout=20m -json",
+      "status": "passed",
+      "counts": {
+        "pass": 103,
+        "fail": 0,
+        "skip": 0
+      },
+      "private_log_sha256": "2677b7d9c5c526bb038e2a3855b45954f652c23a45767b987953ce47f77bf65c"
+    }
+  ],
+  "counting": "Pass counts include Go parent and subtest events; package summaries are excluded.",
+  "backend_build": {
+    "status": "passed",
+    "workspace_sha": "ca8670d5e6d0b748f61aaee5c654585a348dd283",
+    "binary": "/tmp/mattermax-integrated-server",
+    "sha256": "5fe393e94847b7e1f02c09c00d9bcbdf3cc80bb8ababd89609cea7fbd30ea60e",
+    "build_tags_forbidden": false,
+    "enterprise_symbols_found": false,
+    "build_number": "12.0.2-1.integration",
+    "build_enterprise_ready": "false",
+    "symbol_tool": {
+      "path": "/tmp/mattermax-go-tools/nm",
+      "source": "Matching Go 1.26.10 SDK cmd/nm, built locally because the installed SDK omitted the executable.",
+      "command": "go build -o /tmp/mattermax-go-tools/nm cmd/nm"
+    },
+    "scope": "Public backend command built directly; full branded frontend/package workflow not run."
+  },
+  "runtime_smoke": {
+    "status": "passed",
+    "database": "mm_integration_22e05ea81b5d",
+    "runtime_directory": "/tmp/mattermax-integration-smoke-ifyn01fa",
+    "database_removed": true,
+    "server_stopped": true,
+    "probes": [
+      {
+        "path": "/api/v4/system/ping",
+        "http_status": 200,
+        "response": {
+          "ActiveSearchBackend": "database",
+          "AndroidLatestVersion": "",
+          "AndroidMinVersion": "",
+          "IosLatestVersion": "",
+          "IosMinVersion": "",
+          "status": "OK"
+        }
+      },
+      {
+        "path": "/api/v4/config/client?format=old",
+        "http_status": 200,
+        "site_name": "Mattermax",
+        "version": "12.0.2"
+      }
+    ],
+    "base_url": "http://127.0.0.1:18065",
+    "binary": "/tmp/mattermax-integrated-server",
+    "environment": "Allowlisted system variables only; configuration comes from the temporary file plus repository overlay.",
+    "runtime_directory_removed": true
+  },
+  "limits": [
+    "Full branded frontend/packaging workflow not run.",
+    "Selected race suites are not the entire repository test suite.",
+    "Runtime smoke covers startup, ping and anonymous client config only.",
+    "Individual PR benchmarks remain measurements of their recorded standalone code; they are not combined-stack throughput measurements."
+  ]
+}

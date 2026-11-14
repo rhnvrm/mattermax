@@ -38,3 +38,9 @@ unlock-channel-banners.patch
 unlock-managed-channel-categories.patch
 unlock-email-notification-contents.patch
 unlock-anonymous-urls.patch
+slowmode-lookup-index.patch
+preference-batch-upserts.patch
+thread-activity-lookup.patch
+read-receipt-preference-reads.patch
+post-file-metadata.patch
+mini-preview-dispatch.patch

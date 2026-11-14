@@ -519,3 +519,67 @@ and channels keep their names. Gates removed: `createChannel` in
 `PluginAPI.CreateChannel` in `app/plugin_api.go`, the webapp selector
 `isAnonymousURLEnabled` that hides the URL editors, and the System Console
 toggle's Enterprise Advanced check.
+
+### slowmode-lookup-index.patch
+
+2026-11-14. Adds a concurrent partial index on post channel, user and creation
+time for the non-system rows used by slowmode. A lookup with no recent matching
+post can otherwise walk the global creation-time index and filter unrelated
+rows. Deleted posts stay in the index so deletion does not reset the cooldown.
+The query and its API behavior are unchanged. This builds on Karan Sharma's
+slowmode work. [The benchmark](docs/benchmarks/slowmode-lookup/README.md) records
+lookup timings, index size and bulk-insert cost on a synthetic fixture.
+
+### preference-batch-upserts.patch
+
+2026-11-14. Saves unique-key preference batches with chunked multi-row upserts
+in one transaction. Normalization and validation use copies so preference
+events retain the caller's values and order. The full batch uses a stable
+user/category/name order before chunking to avoid opposite-order batch locks.
+Single records and duplicate-key batches keep the existing sequential path,
+including errors from overwritten records. Tests cover duplicate validation,
+theme normalization, later-chunk rollback and concurrent chunked saves.
+[The benchmark](docs/benchmarks/preference-batches/README.md) compares the
+current SQL store with its original implementation.
+
+### thread-activity-lookup.patch
+
+2026-11-14. Reads only root creation and thread last-reply timestamps for
+auto-archive in one query over existing primary keys. Avoids full post and
+participant decoding and the unrelated reply-count aggregate. Missing/deleted
+roots, missing metadata and error handling retain their existing policy. Adds
+store/app regressions and a reproducible SQL-store benchmark. This complements
+Karan Sharma's thread auto-archive work; existing patches and authorship remain
+unchanged. [Measured results](docs/benchmarks/thread-activity/README.md).
+
+### read-receipt-preference-reads.patch
+
+2026-11-14. Loads read-receipt privacy preferences for the current channel
+members in one array-bound query instead of one query per member. Keeps
+missing-row defaults, opt-out and enable-time parsing, visibility checks and
+fail-closed errors. Adds store/app regressions and a reproducible preference
+input benchmark. This complements Karan Sharma's read-receipts work; existing
+patches and authorship remain unchanged.
+[Measured results](docs/benchmarks/read-receipt-inputs/README.md).
+
+### post-file-metadata.patch
+
+2026-11-14. Reuses successfully prepared attachment metadata when adding post
+embeds and images. Avoids a duplicate file lookup, ordering and mini-preview
+dispatch, while retaining second attempts for failed reads, pending previews
+and metadata resets. Keeps standalone behavior, master selection, deleted-file
+flags, attachment order and per-user sanitization. Adds regressions, a negative
+control and paired real-app benchmarks. Existing feature patches and author
+credit remain unchanged.
+[Measured results](docs/benchmarks/post-file-metadata/README.md).
+
+### mini-preview-dispatch.patch
+
+2026-11-14. Checks the existing mini-preview eligibility predicate before
+starting batch workers. Text files, SVGs and images with an existing preview
+skip worker creation and wait-group allocation. Pending raster previews still
+run concurrently, and dispatch waits for completion; failed reads remain
+eligible for later retries. Adds a real-image regression and paired app
+benchmarks, with cached gains and unproven master-read latency gains documented.
+Existing feature patches and author credit remain unchanged.
+[Measured results](docs/benchmarks/mini-preview-dispatch/README.md).
