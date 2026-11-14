@@ -50,3 +50,4 @@ permalink-regexp.patch
 history-file-metadata.patch
 reaction-cache-decoding.patch
 autolink-precheck.patch
+priority-ack-array-reads.patch

@@ -670,3 +670,15 @@ syntax/size checks and fuzzing, plus paired microbenchmarks and real ordered
 history-page benchmarks with link-positive controls. No new dependency or
 public API change. Existing feature patches and author credits are unchanged.
 [Measured results](docs/benchmarks/autolink-precheck/README.md).
+
+### priority-ack-array-reads.patch
+
+2026-11-14. Uses fixed PostgreSQL queries and existing array parameters for
+batched priority and acknowledgement reads. Avoids building one placeholder
+per ID while retaining the 200-ID boundaries, cross-batch duplicates, NULL
+flags, acknowledgement filtering, remote fields, replica selection and SQL
+wrapper behavior. Adds legacy-query compatibility, batch/error regressions
+and paired store/ordered-history benchmarks with positive metadata checks.
+No new dependency, public API, schema or configuration change. Existing feature
+patches and author credits remain unchanged.
+[Measured results](docs/benchmarks/priority-ack-array-reads/README.md).

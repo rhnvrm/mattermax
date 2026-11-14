@@ -1,24 +1,22 @@
 # Combined performance contribution verification
 
-This checkpoint combines PRs #39 through #50 over the original 38 Mattermax
-patches. All 50 patches apply cleanly to pinned v12.0.2. The original patches
+This checkpoint combines PRs #39 through #51 over the original 38 Mattermax
+patches. All 51 patches apply cleanly to pinned v12.0.2. The original patches
 retain their authorship, including Karan Sharma's (@mr-karan) feature work.
 This fork-only branch adds no upstream PR.
 
-PR #50 integrates without conflicts. All 49 earlier patch files remain
-byte-identical. The new patch differs from its standalone PR only in Git index
-hashes and hunk line numbers, reflecting the integration file's earlier changes.
-Removing only those format fields yields a byte-identical patch. Only
-post_metadata.go and the new test file differ from the eleven-contribution
-source. No extra production edits were needed.
+PR #51 integrates without conflicts. All 50 earlier patch files remain
+byte-identical. The new patch and its four changed source files match the
+standalone contribution exactly. No extra production edits were needed.
 
-The declaration comparison matches 2,922 non-import Go declarations across
-32 files. Its negative control rejects an unexpected declaration in a
+The declaration comparison matches 2,946 non-import Go declarations across
+36 files. Its negative control rejects an unexpected declaration in a
 temporary copy. [report.json](report.json) records source/tree hashes,
 commands, test scopes, build checks and startup probes.
 
-Fresh app/API/reaction-cache race suites passed 406 parent/subtest events
-with no failures or skips (app: 273, api4: 96, localcachelayer: 37). They cover reaction decoding and invalidation, actual Redis/LRU
+Fresh app/API/cache/priority-ack SQL race suites passed 501 parent/subtest events
+with no failures or skips (app: 283, api4: 107, localcachelayer:
+37, sqlstore: 74). They cover reaction decoding and invalidation, actual Redis/LRU
 compatibility and isolation, post preparation, receipts, file ordering and
 policy filtering, shared metadata isolation, content limits, preview retries,
 burn-on-read resets, image/proxy handling and permalink previews. Autolink
@@ -26,12 +24,14 @@ checks compare both returned links and existing malformed-input panic outcomes;
 the shared Markdown parser remains unchanged.
 
 Earlier file-info SQL/cache checks and broader store/cache runs remain
-available in immutable historical report links at their tested revisions.
-SQL store code and public/platform dependencies are byte-identical. Reaction cache code changed in PR #49;
-earlier cache runs are historical and the current cache suite is fresh.
-The report does not relabel old runs or add their counts to the current run.
+available in immutable historical report links. Public/platform dependencies
+are byte-identical. Reaction caching changed in PR #49 and priority/ack reads
+changed in PR #51, so earlier store/cache runs stay scoped to their original
+source. Fresh selected suites cover current cache and changed SQL paths,
+including batch boundaries, NULL fields and partial-error behavior. Historical
+counts are not added to the fresh run.
 
-All 46 benchmark cases pass single-iteration execution/output checks.
+All 64 benchmark cases pass single-iteration execution/output checks.
 These timings support no performance claim. The ordered fixtures include and
 validate PostList.Order, including priority and acknowledgement reads.
 Standalone paired timing reports remain scoped to their recorded PR sources;
@@ -60,8 +60,8 @@ metadata. Both packaged executables pass the release script's tag/symbol
 checks; the translation and overlay checks pass. Root HTML and its initial
 JavaScript assets return HTTP 200 from the packaged server.
 
-Packaging has not been rerun with PR #49. The webapp, branding, overlay and
-release scripts are unchanged; the new backend is built and checked separately.
+Packaging has not been rerun with PRs #49 through #51. The webapp, branding,
+overlay and release scripts are unchanged; the new backend is built and checked separately.
 No release tag, deployment or published release is created.
 
 The earlier frontend build reports 77 webpack warnings, including three
@@ -80,7 +80,7 @@ TEST_DATABASE_POSTGRESQL_DSN and TEST_REDIS_ADDR, then start from this branch:
 just workspace
 just check
 cd work/src/server
-make setup-go-work BUILD_NUMBER=12.0.2-1.integration-eleven BUILD_ENTERPRISE=false BUILD_ENTERPRISE_READY=false BUILD_ENTERPRISE_DIR=/nonexistent
+make setup-go-work BUILD_NUMBER=12.0.2-1.integration-thirteen BUILD_ENTERPRISE=false BUILD_ENTERPRISE_READY=false BUILD_ENTERPRISE_DIR=/nonexistent
 ```
 
 Run the fresh race, benchmark-smoke and backend build commands in report.json
