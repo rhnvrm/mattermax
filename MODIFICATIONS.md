@@ -690,3 +690,11 @@ restricted-domain check, instead of once for every domain entry. Preserve the
 empty-list allow behavior, substring matching and existing warning/error paths.
 Adds edge-case tests and filtering/history benchmarks. Changes no API, schema,
 configuration or dependency.
+
+### team-thread-unread-aggregation.patch
+
+2026-11-14. Compute team thread unread counts, mention sums and optional urgent
+mention sums in one grouped query instead of two or three concurrent queries.
+Preserve channel-membership filtering, deleted/followed rules, zero-valued team
+groups and the urgent-feature toggle. Adds compatibility tests and serial/
+parallel SQL benchmarks. Changes no API, schema, configuration or dependency.
