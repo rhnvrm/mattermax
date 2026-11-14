@@ -14,11 +14,18 @@ changes with the integrated source: 2,769 non-import Go declarations across
 separately check imports and types. Integration adds no production behavior
 beyond the submitted contributions.
 
+The PR #45 through #47 fixtures now populate and validate PostList.Order.
+Earlier fixtures omitted Order, skipping priority and acknowledgement reads;
+those timing reports are superseded by the corrected paired measurements.
+
 [report.json](report.json) records source/tree hashes, exact test selectors,
 counts, build checks and smoke outcomes. Selected race suites passed
 727 parent/subtest checks with no failures or skips
-(sqlstore: 332, app: 207, api4: 158, localcachelayer: 30). Coverage includes
-post/thread storage, slowmode and archive rules,
+(sqlstore: 332, app: 207, api4: 158, localcachelayer: 30). These checks ran
+before the benchmark-only correction; production
+and regression-test declarations are unchanged. The corrected ordered fixtures
+also pass an execution/output smoke check. Coverage includes post/thread
+storage, slowmode and archive rules,
 preference batches and plugin access, receipt privacy, reaction batching and
 cache invalidation, attachment preparation, real previews, retries, sanitization,
 file-policy filtering, image syntax/proxies and permalink handling.

@@ -598,6 +598,11 @@ real-app benchmarks. Built on the attachment-metadata preparation patch.
 Existing feature patches and contributor credit remain unchanged.
 [Measured results](docs/benchmarks/reaction-history/README.md).
 
+2026-11-14. Corrects the benchmark fixture to populate and validate history
+order, including priority and acknowledgement reads. The new timings supersede
+the earlier incomplete fixture. Production code and regression tests are
+unchanged.
+
 ### markdown-image-scan.patch
 
 2026-11-14. Skips Markdown image parsing for text without a literal exclamation
@@ -608,6 +613,11 @@ paired real history-page benchmarks with punctuation and image controls.
 Existing patches and contributor credits remain unchanged.
 [Measured results](docs/benchmarks/markdown-image-scan/README.md).
 
+2026-11-14. Corrects the benchmark fixture to populate and validate history
+order, including priority and acknowledgement reads. The new timings supersede
+the earlier incomplete fixture. Production code and regression tests are
+unchanged.
+
 ### permalink-regexp.patch
 
 2026-11-14. Compiles the constant permalink-path regexp once and reuses it
@@ -617,3 +627,8 @@ boundary regressions and paired real history-page benchmarks with explicitly
 configured SiteURL, same-site URLs, external URL controls and cached permalink
 previews. Existing patches and contributor credits remain unchanged.
 [Measured results](docs/benchmarks/permalink-regexp/README.md).
+
+2026-11-14. Corrects the benchmark fixture to populate and validate history
+order, including priority and acknowledgement reads. The new timings supersede
+the earlier incomplete fixture. Production code and regression tests are
+unchanged.
