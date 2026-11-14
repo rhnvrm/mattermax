@@ -44,3 +44,6 @@ thread-activity-lookup.patch
 read-receipt-preference-reads.patch
 post-file-metadata.patch
 mini-preview-dispatch.patch
+reaction-history-batches.patch
+markdown-image-scan.patch
+permalink-regexp.patch

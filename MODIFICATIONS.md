@@ -583,3 +583,37 @@ eligible for later retries. Adds a real-image regression and paired app
 benchmarks, with cached gains and unproven master-read latency gains documented.
 Existing feature patches and author credit remain unchanged.
 [Measured results](docs/benchmarks/mini-preview-dispatch/README.md).
+
+### reaction-history-batches.patch
+
+2026-11-14. Batches active reaction reads for history pages with multiple
+reaction-bearing posts. Each cached entry is decoded once; only cache misses
+reach bounded SQL batches. Preserves creation-time ordering, legacy NULL
+handling, remote/channel fields, empty results and existing Save/Delete cache
+invalidation. A failed bulk read falls back to the existing per-post path.
+Single-post preparation and nested permalink reads retain their own lookups;
+deleted and unrevealed burn-on-read posts retain metadata filtering. Regenerates
+store wrappers/mocks and adds storage, cache and app regressions plus paired
+real-app benchmarks. Built on the attachment-metadata preparation patch.
+Existing feature patches and contributor credit remain unchanged.
+[Measured results](docs/benchmarks/reaction-history/README.md).
+
+### markdown-image-scan.patch
+
+2026-11-14. Skips Markdown image parsing for text without a literal exclamation
+mark, which both inline and reference image syntax require. Keeps the existing
+empty-slice result and the full parser/domain checks for all other inputs.
+Adds encoded/escaped punctuation, code and image-reference regressions, plus
+paired real history-page benchmarks with punctuation and image controls.
+Existing patches and contributor credits remain unchanged.
+[Measured results](docs/benchmarks/markdown-image-scan/README.md).
+
+### permalink-regexp.patch
+
+2026-11-14. Compiles the constant permalink-path regexp once and reuses it
+across post preparation and metadata lookups. Keeps the pattern, SiteURL prefix
+checks, whitespace/slash handling and accepted/rejected URLs unchanged. Adds
+boundary regressions and paired real history-page benchmarks with explicitly
+configured SiteURL, same-site URLs, external URL controls and cached permalink
+previews. Existing patches and contributor credits remain unchanged.
+[Measured results](docs/benchmarks/permalink-regexp/README.md).
