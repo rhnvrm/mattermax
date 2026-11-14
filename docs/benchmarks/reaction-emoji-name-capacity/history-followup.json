@@ -1,0 +1,320 @@
+{
+  "scope": "Standalone contribution over the original 38-patch baseline. Alternating-order processes with identical fixtures and fixed iterations; output validation is enabled in both variants.",
+  "source_workspace_sha": "8121484865115eadc709fdf67abde0cce06161e3",
+  "source_tree_sha": "c4278719422f598b2f5c89d49de2cc0fc68cd17b",
+  "baseline_source_sha": "c9dbbcc480b242f7349cb7f4e9dcb6ea35cf6404",
+  "production_file": "server/channels/app/post_metadata.go",
+  "production_file_before_sha256": "7c1df926962309717a8bbb013c12f9bd18ca1882da213f4346ae370be66340b7",
+  "production_file_after_sha256": "eff83c19ceb49e363171eaedd6b618028298d41f9119662c903d0bccfcb715b8",
+  "go_version": "go version go1.26.10 linux/amd64",
+  "platform": "Linux-6.18.55-cachyos-x86_64-with-glibc2.44",
+  "GOMAXPROCS": "4",
+  "trials": 3,
+  "benchmarks": "history",
+  "commands": [
+    {
+      "trial": 0,
+      "variant": "before",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=5000x",
+        "-count=1",
+        "-timeout=5m",
+        "-overlay",
+        "/tmp/reaction-emoji-baseline-3i0eztib/overlay.json"
+      ],
+      "log_sha256": "e20f8412fae382cdbff418387fb1a03aeaf8b8ba4558d5bdff39fffdd82a520a"
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=5000x",
+        "-count=1",
+        "-timeout=5m"
+      ],
+      "log_sha256": "e632c562324964ac6b3595c7014336609d7de2221bb59e9c4c8138a9e6e2dddc"
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=5000x",
+        "-count=1",
+        "-timeout=5m"
+      ],
+      "log_sha256": "999304df0a4c16aa7969d3f9ff44feedb02ee2dfd020187bcd574f9594c11c06"
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=5000x",
+        "-count=1",
+        "-timeout=5m",
+        "-overlay",
+        "/tmp/reaction-emoji-baseline-3i0eztib/overlay.json"
+      ],
+      "log_sha256": "803d83e34b0af156f5cc8d09ca22383eb4f07b2794f86dcc1ec7ddef75f67135"
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=5000x",
+        "-count=1",
+        "-timeout=5m",
+        "-overlay",
+        "/tmp/reaction-emoji-baseline-3i0eztib/overlay.json"
+      ],
+      "log_sha256": "15432a4c0b40e4b001ed2ffbebd76da6720c7f00d680c6fd56d34bb5bc0ac56b"
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=5000x",
+        "-count=1",
+        "-timeout=5m"
+      ],
+      "log_sha256": "ea157573b8047ccfe4501de40ab5d884bfdedc3e9142382ab31bff7d7e71017e"
+    }
+  ],
+  "rows": [
+    {
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "before": {
+        "ns/op": {
+          "median": 287356.0,
+          "min": 276802.0,
+          "max": 305149.0
+        },
+        "B/op": {
+          "median": 17171,
+          "min": 17164,
+          "max": 17178
+        },
+        "allocs/op": {
+          "median": 311,
+          "min": 311,
+          "max": 311
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 282969.0,
+          "min": 280822.0,
+          "max": 291935.0
+        },
+        "B/op": {
+          "median": 17105,
+          "min": 17104,
+          "max": 17106
+        },
+        "allocs/op": {
+          "median": 309,
+          "min": 309,
+          "max": 309
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "before": {
+        "ns/op": {
+          "median": 930569.0,
+          "min": 893170.0,
+          "max": 933276.0
+        },
+        "B/op": {
+          "median": 186805,
+          "min": 186803,
+          "max": 186807
+        },
+        "allocs/op": {
+          "median": 4111,
+          "min": 4111,
+          "max": 4111
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 973968.0,
+          "min": 930197.0,
+          "max": 974372.0
+        },
+        "B/op": {
+          "median": 182964,
+          "min": 182964,
+          "max": 182966
+        },
+        "allocs/op": {
+          "median": 3991,
+          "min": 3991,
+          "max": 3991
+        }
+      }
+    }
+  ],
+  "samples": [
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 5000,
+      "ns/op": 276802.0,
+      "B/op": 17178,
+      "allocs/op": 311
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 5000,
+      "ns/op": 930569.0,
+      "B/op": 186803,
+      "allocs/op": 4111
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 5000,
+      "ns/op": 280822.0,
+      "B/op": 17105,
+      "allocs/op": 309
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 5000,
+      "ns/op": 974372.0,
+      "B/op": 182964,
+      "allocs/op": 3991
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 5000,
+      "ns/op": 282969.0,
+      "B/op": 17106,
+      "allocs/op": 309
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 5000,
+      "ns/op": 930197.0,
+      "B/op": 182966,
+      "allocs/op": 3991
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 5000,
+      "ns/op": 305149.0,
+      "B/op": 17171,
+      "allocs/op": 311
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 5000,
+      "ns/op": 893170.0,
+      "B/op": 186807,
+      "allocs/op": 4111
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 5000,
+      "ns/op": 287356.0,
+      "B/op": 17164,
+      "allocs/op": 311
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 5000,
+      "ns/op": 933276.0,
+      "B/op": 186805,
+      "allocs/op": 4111
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 5000,
+      "ns/op": 291935.0,
+      "B/op": 17104,
+      "allocs/op": 309
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 5000,
+      "ns/op": 973968.0,
+      "B/op": 182964,
+      "allocs/op": 3991
+    }
+  ],
+  "limits": [
+    "Local PostgreSQL and in-process warm reaction caches; no remote services, concurrent load or production-capacity measurement.",
+    "Standalone allocation and timing results are not combined-stack throughput measurements."
+  ]
+}

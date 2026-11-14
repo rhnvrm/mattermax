@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "source_workspace_sha": "8121484865115eadc709fdf67abde0cce06161e3",
+  "source_tree_sha": "c4278719422f598b2f5c89d49de2cc0fc68cd17b",
+  "baseline_source_sha": "c9dbbcc480b242f7349cb7f4e9dcb6ea35cf6404",
+  "only_changed_source_paths": [
+    "server/channels/app/post_metadata.go",
+    "server/channels/app/reaction_emoji_history_test.go",
+    "server/channels/app/reaction_emoji_names_test.go"
+  ],
+  "production_changes": "One stdlib import and one capacity reservation before the existing reaction-name loop.",
+  "selected_race_and_benchmark_smoke": {
+    "status": "passed",
+    "source_workspace_sha": "8121484865115eadc709fdf67abde0cce06161e3",
+    "counts": {
+      "app": {
+        "pass": 33,
+        "fail": 0,
+        "skip": 0
+      },
+      "api4": {
+        "pass": 38,
+        "fail": 0,
+        "skip": 0
+      }
+    },
+    "parent_subtest_pass_events": 71,
+    "benchmark_smoke_cases": 12,
+    "benchmark_smoke_names": [
+      "BenchmarkReactionEmojiHistory/posts=1",
+      "BenchmarkReactionEmojiHistory/posts=60",
+      "BenchmarkReactionEmojiNames/text=false/reactions=0",
+      "BenchmarkReactionEmojiNames/text=false/reactions=1",
+      "BenchmarkReactionEmojiNames/text=false/reactions=3",
+      "BenchmarkReactionEmojiNames/text=false/reactions=12",
+      "BenchmarkReactionEmojiNames/text=false/reactions=60",
+      "BenchmarkReactionEmojiNames/text=true/reactions=0",
+      "BenchmarkReactionEmojiNames/text=true/reactions=1",
+      "BenchmarkReactionEmojiNames/text=true/reactions=3",
+      "BenchmarkReactionEmojiNames/text=true/reactions=12",
+      "BenchmarkReactionEmojiNames/text=true/reactions=60"
+    ],
+    "private_log_sha256": "adb386bd5e0eca55e04b5dc6e7463e80a279d766631a62c50782ef9e5009a6f6",
+    "scope": "Selected emoji parsing, interactive-block omission, custom emoji, post preparation and app/API reaction tests under race detector. Benchmark timings with -race and 1x are execution/output checks only.",
+    "command": [
+      "go",
+      "test",
+      "-race",
+      "-p",
+      "2",
+      "./channels/app",
+      "./channels/api4",
+      "-run",
+      "^(TestGetEmojiNamesForString|TestGetEmojiNamesForPost|TestGetCustomEmojisForPost|TestPreparePostListForClient|TestSaveReactionForPost|TestDeleteReactionForPost|TestGetReactions|TestSaveReaction|TestDeleteReaction)$",
+      "-bench",
+      "^BenchmarkReactionEmoji(Names|History)$",
+      "-benchtime=1x",
+      "-count=1",
+      "-timeout=10m",
+      "-json"
+    ]
+  },
+  "patches": {
+    "status": "passed",
+    "original_patch_files_byte_identical": 38,
+    "baseline_root_sha": "d2b07cc3f7c3200349e32ca167a39bdc85255baf",
+    "new_patch": "reaction-emoji-name-capacity.patch",
+    "new_series_count": 39,
+    "private_patch_check_log_sha256": "beab570c027102ef1d8f465f5ae4c7fddbaa4ffc1d552cde44f3454b15df802a"
+  },
+  "backend_build": {
+    "status": "passed",
+    "source_workspace_sha": "8121484865115eadc709fdf67abde0cce06161e3",
+    "command": [
+      "go",
+      "build",
+      "-tags",
+      "production",
+      "-ldflags",
+      "-X github.com/mattermost/mattermost/server/public/model.BuildNumber=12.0.2-1.reaction-emoji-capacity -X github.com/mattermost/mattermost/server/public/model.BuildHash=8121484865115eadc709fdf67abde0cce06161e3 -X github.com/mattermost/mattermost/server/public/model.BuildEnterpriseReady=false",
+      "-o",
+      "/tmp/mattermax-reaction-emoji-capacity-server",
+      "./cmd/mattermost"
+    ],
+    "build_tags": "production",
+    "forbidden_build_tags": false,
+    "enterprise_symbols_found": false,
+    "binary_sha256": "962a416d63513823c61fcdf44080f1bfff1f7234178106598b31f957042b0178",
+    "private_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scope": "Public backend only. No branded frontend/package rebuild, deployment or production load test.",
+    "symbol_tool": "Matching standard SDK cmd/nm via temporary GOROOT; same exclusion criteria as scripts/build-release.sh."
+  },
+  "environment": {
+    "GOMAXPROCS": "4",
+    "GOFLAGS": "-p=2",
+    "services": "Disposable PostgreSQL 17 and Redis on loopback. No production data."
+  },
+  "scope_limits": [
+    "Selected suites are not the entire repository test suite.",
+    "Full branded packaging, browser checks and production load testing were not run for this contribution."
+  ],
+  "authorship": "All inherited patch files are byte-identical, preserving existing authorship including @mr-karan. This independent optimization does not claim coauthorship by prior contributors.",
+  "contribution_decision": {
+    "status": "held",
+    "reason": "The allocation reduction comes with a repeatable full-history latency regression. No upstream PR submitted.",
+    "longer_history_report": "history-followup.json",
+    "scope": "Fork-only R&D, not an accepted performance improvement."
+  }
+}

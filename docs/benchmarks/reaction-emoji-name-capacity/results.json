@@ -1,0 +1,1343 @@
+{
+  "scope": "Standalone contribution over the original 38-patch baseline. Alternating-order processes with identical fixtures and fixed iterations; output validation is enabled in both variants.",
+  "source_workspace_sha": "8121484865115eadc709fdf67abde0cce06161e3",
+  "source_tree_sha": "c4278719422f598b2f5c89d49de2cc0fc68cd17b",
+  "baseline_source_sha": "c9dbbcc480b242f7349cb7f4e9dcb6ea35cf6404",
+  "production_file": "server/channels/app/post_metadata.go",
+  "production_file_before_sha256": "7c1df926962309717a8bbb013c12f9bd18ca1882da213f4346ae370be66340b7",
+  "production_file_after_sha256": "eff83c19ceb49e363171eaedd6b618028298d41f9119662c903d0bccfcb715b8",
+  "go_version": "go version go1.26.10 linux/amd64",
+  "platform": "Linux-6.18.55-cachyos-x86_64-with-glibc2.44",
+  "GOMAXPROCS": "4",
+  "trials": 3,
+  "commands": [
+    {
+      "trial": 0,
+      "variant": "before",
+      "kind": "Names",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiNames$",
+        "-benchtime=100000x",
+        "-count=1",
+        "-timeout=5m",
+        "-overlay",
+        "/tmp/reaction-emoji-baseline-lve7o0vj/overlay.json"
+      ],
+      "log_sha256": "53a832928abcc450e78374620da79731912f134d9411da0464504140da629712"
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=1000x",
+        "-count=1",
+        "-timeout=5m",
+        "-overlay",
+        "/tmp/reaction-emoji-baseline-lve7o0vj/overlay.json"
+      ],
+      "log_sha256": "95c0e2f770c5d402378569192edc19b15d325d3411bd100e8548f88ada8d9f05"
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "kind": "Names",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiNames$",
+        "-benchtime=100000x",
+        "-count=1",
+        "-timeout=5m"
+      ],
+      "log_sha256": "67ce13c3bfba0a622137df51db94ba68b5a521ae01be3b5086f83c00c13fc472"
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=1000x",
+        "-count=1",
+        "-timeout=5m"
+      ],
+      "log_sha256": "c23aeb6cd8fa019794065e56bf6160b0e34bf82c647a4354c01ce42a8e03bbd7"
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "kind": "Names",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiNames$",
+        "-benchtime=100000x",
+        "-count=1",
+        "-timeout=5m"
+      ],
+      "log_sha256": "d1272232b0660e2e7e26eb7fcfa97af2350f303a9ec979117c806aa82aed4133"
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=1000x",
+        "-count=1",
+        "-timeout=5m"
+      ],
+      "log_sha256": "53b3593e7a0168c94c3e947182395dd1cd10150d1a4b0728171240b46b52fa0e"
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "kind": "Names",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiNames$",
+        "-benchtime=100000x",
+        "-count=1",
+        "-timeout=5m",
+        "-overlay",
+        "/tmp/reaction-emoji-baseline-lve7o0vj/overlay.json"
+      ],
+      "log_sha256": "37f4e413847f01550eaf609b9caf680407146e74439d6e7b94b918bda8b3058d"
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=1000x",
+        "-count=1",
+        "-timeout=5m",
+        "-overlay",
+        "/tmp/reaction-emoji-baseline-lve7o0vj/overlay.json"
+      ],
+      "log_sha256": "e3718a2324c47964518f8f7de74acc4647516b4a4ee50e7ea0d8c6d7e61b2966"
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "kind": "Names",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiNames$",
+        "-benchtime=100000x",
+        "-count=1",
+        "-timeout=5m",
+        "-overlay",
+        "/tmp/reaction-emoji-baseline-lve7o0vj/overlay.json"
+      ],
+      "log_sha256": "f27433f3cb2e35d70da6b3fd4816e1d18b785cc218eb2740bfa7c6e5d105d3a6"
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=1000x",
+        "-count=1",
+        "-timeout=5m",
+        "-overlay",
+        "/tmp/reaction-emoji-baseline-lve7o0vj/overlay.json"
+      ],
+      "log_sha256": "97a1ebefd213893085f31dbe9bdfd877fb064ba31123b29a966c29546f193a9a"
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "kind": "Names",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiNames$",
+        "-benchtime=100000x",
+        "-count=1",
+        "-timeout=5m"
+      ],
+      "log_sha256": "6187f637f856e8f5e3d01eb5add785825921956079e5c0c98b2bf8e98f540a63"
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "kind": "History",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionEmojiHistory$",
+        "-benchtime=1000x",
+        "-count=1",
+        "-timeout=5m"
+      ],
+      "log_sha256": "2a705b7b8337f3ad0d48139ee03224b27b339003bd33a6327972e297887c4830"
+    }
+  ],
+  "rows": [
+    {
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "before": {
+        "ns/op": {
+          "median": 311931.0,
+          "min": 268347.0,
+          "max": 404842.0
+        },
+        "B/op": {
+          "median": 17224,
+          "min": 17218,
+          "max": 17256
+        },
+        "allocs/op": {
+          "median": 311,
+          "min": 311,
+          "max": 311
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 353936.0,
+          "min": 301455.0,
+          "max": 354017.0
+        },
+        "B/op": {
+          "median": 17182,
+          "min": 17150,
+          "max": 17185
+        },
+        "allocs/op": {
+          "median": 309,
+          "min": 309,
+          "max": 309
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "before": {
+        "ns/op": {
+          "median": 1103470.0,
+          "min": 1092695.0,
+          "max": 1105598.0
+        },
+        "B/op": {
+          "median": 186812,
+          "min": 186808,
+          "max": 186813
+        },
+        "allocs/op": {
+          "median": 4111,
+          "min": 4111,
+          "max": 4111
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 1128728.0,
+          "min": 1110107.0,
+          "max": 1134748.0
+        },
+        "B/op": {
+          "median": 182969,
+          "min": 182964,
+          "max": 182974
+        },
+        "allocs/op": {
+          "median": 3991,
+          "min": 3991,
+          "max": 3991
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=0",
+      "before": {
+        "ns/op": {
+          "median": 96.96,
+          "min": 77.64,
+          "max": 118.8
+        },
+        "B/op": {
+          "median": 16,
+          "min": 16,
+          "max": 16
+        },
+        "allocs/op": {
+          "median": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 78.28,
+          "min": 73.51,
+          "max": 89.55
+        },
+        "B/op": {
+          "median": 16,
+          "min": 16,
+          "max": 16
+        },
+        "allocs/op": {
+          "median": 1,
+          "min": 1,
+          "max": 1
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=1",
+      "before": {
+        "ns/op": {
+          "median": 101.3,
+          "min": 90.18,
+          "max": 165.1
+        },
+        "B/op": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "allocs/op": {
+          "median": 2,
+          "min": 2,
+          "max": 2
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 93.28,
+          "min": 91.8,
+          "max": 99.82
+        },
+        "B/op": {
+          "median": 32,
+          "min": 32,
+          "max": 32
+        },
+        "allocs/op": {
+          "median": 2,
+          "min": 2,
+          "max": 2
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=12",
+      "before": {
+        "ns/op": {
+          "median": 420.7,
+          "min": 416.8,
+          "max": 423.0
+        },
+        "B/op": {
+          "median": 512,
+          "min": 512,
+          "max": 512
+        },
+        "allocs/op": {
+          "median": 6,
+          "min": 6,
+          "max": 6
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 278.9,
+          "min": 270.0,
+          "max": 299.4
+        },
+        "B/op": {
+          "median": 208,
+          "min": 208,
+          "max": 208
+        },
+        "allocs/op": {
+          "median": 2,
+          "min": 2,
+          "max": 2
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=3",
+      "before": {
+        "ns/op": {
+          "median": 162.6,
+          "min": 155.0,
+          "max": 178.4
+        },
+        "B/op": {
+          "median": 128,
+          "min": 128,
+          "max": 128
+        },
+        "allocs/op": {
+          "median": 4,
+          "min": 4,
+          "max": 4
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 117.5,
+          "min": 117.2,
+          "max": 123.3
+        },
+        "B/op": {
+          "median": 64,
+          "min": 64,
+          "max": 64
+        },
+        "allocs/op": {
+          "median": 2,
+          "min": 2,
+          "max": 2
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=60",
+      "before": {
+        "ns/op": {
+          "median": 1412.0,
+          "min": 1405.0,
+          "max": 1456.0
+        },
+        "B/op": {
+          "median": 2177,
+          "min": 2177,
+          "max": 2177
+        },
+        "allocs/op": {
+          "median": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 1065.0,
+          "min": 1044.0,
+          "max": 1125.0
+        },
+        "B/op": {
+          "median": 1040,
+          "min": 1040,
+          "max": 1040
+        },
+        "allocs/op": {
+          "median": 2,
+          "min": 2,
+          "max": 2
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=0",
+      "before": {
+        "ns/op": {
+          "median": 374.8,
+          "min": 369.9,
+          "max": 411.6
+        },
+        "B/op": {
+          "median": 240,
+          "min": 240,
+          "max": 240
+        },
+        "allocs/op": {
+          "median": 5,
+          "min": 5,
+          "max": 5
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 382.0,
+          "min": 357.9,
+          "max": 400.0
+        },
+        "B/op": {
+          "median": 240,
+          "min": 240,
+          "max": 240
+        },
+        "allocs/op": {
+          "median": 5,
+          "min": 5,
+          "max": 5
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=1",
+      "before": {
+        "ns/op": {
+          "median": 447.2,
+          "min": 440.0,
+          "max": 461.3
+        },
+        "B/op": {
+          "median": 304,
+          "min": 304,
+          "max": 304
+        },
+        "allocs/op": {
+          "median": 6,
+          "min": 6,
+          "max": 6
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 457.1,
+          "min": 441.8,
+          "max": 510.3
+        },
+        "B/op": {
+          "median": 304,
+          "min": 304,
+          "max": 304
+        },
+        "allocs/op": {
+          "median": 6,
+          "min": 6,
+          "max": 6
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=12",
+      "before": {
+        "ns/op": {
+          "median": 831.6,
+          "min": 794.9,
+          "max": 832.4
+        },
+        "B/op": {
+          "median": 688,
+          "min": 688,
+          "max": 688
+        },
+        "allocs/op": {
+          "median": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 699.7,
+          "min": 680.3,
+          "max": 749.3
+        },
+        "B/op": {
+          "median": 464,
+          "min": 464,
+          "max": 464
+        },
+        "allocs/op": {
+          "median": 6,
+          "min": 6,
+          "max": 6
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=3",
+      "before": {
+        "ns/op": {
+          "median": 531.0,
+          "min": 506.4,
+          "max": 539.2
+        },
+        "B/op": {
+          "median": 432,
+          "min": 432,
+          "max": 432
+        },
+        "allocs/op": {
+          "median": 7,
+          "min": 7,
+          "max": 7
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 480.7,
+          "min": 459.9,
+          "max": 497.5
+        },
+        "B/op": {
+          "median": 320,
+          "min": 320,
+          "max": 320
+        },
+        "allocs/op": {
+          "median": 6,
+          "min": 6,
+          "max": 6
+        }
+      }
+    },
+    {
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=60",
+      "before": {
+        "ns/op": {
+          "median": 2565.0,
+          "min": 2454.0,
+          "max": 2572.0
+        },
+        "B/op": {
+          "median": 2353,
+          "min": 2352,
+          "max": 2354
+        },
+        "allocs/op": {
+          "median": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "after": {
+        "ns/op": {
+          "median": 2179.0,
+          "min": 2160.0,
+          "max": 2361.0
+        },
+        "B/op": {
+          "median": 1264,
+          "min": 1264,
+          "max": 1265
+        },
+        "allocs/op": {
+          "median": 6,
+          "min": 6,
+          "max": 6
+        }
+      }
+    }
+  ],
+  "samples": [
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=0",
+      "iterations": 100000,
+      "ns/op": 96.96,
+      "B/op": 16,
+      "allocs/op": 1
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=1",
+      "iterations": 100000,
+      "ns/op": 101.3,
+      "B/op": 32,
+      "allocs/op": 2
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=3",
+      "iterations": 100000,
+      "ns/op": 178.4,
+      "B/op": 128,
+      "allocs/op": 4
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=12",
+      "iterations": 100000,
+      "ns/op": 420.7,
+      "B/op": 512,
+      "allocs/op": 6
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=60",
+      "iterations": 100000,
+      "ns/op": 1456.0,
+      "B/op": 2177,
+      "allocs/op": 8
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=0",
+      "iterations": 100000,
+      "ns/op": 411.6,
+      "B/op": 240,
+      "allocs/op": 5
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=1",
+      "iterations": 100000,
+      "ns/op": 461.3,
+      "B/op": 304,
+      "allocs/op": 6
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=3",
+      "iterations": 100000,
+      "ns/op": 531.0,
+      "B/op": 432,
+      "allocs/op": 7
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=12",
+      "iterations": 100000,
+      "ns/op": 832.4,
+      "B/op": 688,
+      "allocs/op": 8
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=60",
+      "iterations": 100000,
+      "ns/op": 2572.0,
+      "B/op": 2353,
+      "allocs/op": 10
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 1000,
+      "ns/op": 311931.0,
+      "B/op": 17218,
+      "allocs/op": 311
+    },
+    {
+      "trial": 0,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 1000,
+      "ns/op": 1092695.0,
+      "B/op": 186813,
+      "allocs/op": 4111
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=0",
+      "iterations": 100000,
+      "ns/op": 78.28,
+      "B/op": 16,
+      "allocs/op": 1
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=1",
+      "iterations": 100000,
+      "ns/op": 99.82,
+      "B/op": 32,
+      "allocs/op": 2
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=3",
+      "iterations": 100000,
+      "ns/op": 123.3,
+      "B/op": 64,
+      "allocs/op": 2
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=12",
+      "iterations": 100000,
+      "ns/op": 299.4,
+      "B/op": 208,
+      "allocs/op": 2
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=60",
+      "iterations": 100000,
+      "ns/op": 1125.0,
+      "B/op": 1040,
+      "allocs/op": 2
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=0",
+      "iterations": 100000,
+      "ns/op": 400.0,
+      "B/op": 240,
+      "allocs/op": 5
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=1",
+      "iterations": 100000,
+      "ns/op": 510.3,
+      "B/op": 304,
+      "allocs/op": 6
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=3",
+      "iterations": 100000,
+      "ns/op": 497.5,
+      "B/op": 320,
+      "allocs/op": 6
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=12",
+      "iterations": 100000,
+      "ns/op": 749.3,
+      "B/op": 464,
+      "allocs/op": 6
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=60",
+      "iterations": 100000,
+      "ns/op": 2361.0,
+      "B/op": 1264,
+      "allocs/op": 6
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 1000,
+      "ns/op": 354017.0,
+      "B/op": 17150,
+      "allocs/op": 309
+    },
+    {
+      "trial": 0,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 1000,
+      "ns/op": 1110107.0,
+      "B/op": 182969,
+      "allocs/op": 3991
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=0",
+      "iterations": 100000,
+      "ns/op": 89.55,
+      "B/op": 16,
+      "allocs/op": 1
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=1",
+      "iterations": 100000,
+      "ns/op": 93.28,
+      "B/op": 32,
+      "allocs/op": 2
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=3",
+      "iterations": 100000,
+      "ns/op": 117.2,
+      "B/op": 64,
+      "allocs/op": 2
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=12",
+      "iterations": 100000,
+      "ns/op": 278.9,
+      "B/op": 208,
+      "allocs/op": 2
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=60",
+      "iterations": 100000,
+      "ns/op": 1065.0,
+      "B/op": 1040,
+      "allocs/op": 2
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=0",
+      "iterations": 100000,
+      "ns/op": 382.0,
+      "B/op": 240,
+      "allocs/op": 5
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=1",
+      "iterations": 100000,
+      "ns/op": 457.1,
+      "B/op": 304,
+      "allocs/op": 6
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=3",
+      "iterations": 100000,
+      "ns/op": 480.7,
+      "B/op": 320,
+      "allocs/op": 6
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=12",
+      "iterations": 100000,
+      "ns/op": 699.7,
+      "B/op": 464,
+      "allocs/op": 6
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=60",
+      "iterations": 100000,
+      "ns/op": 2160.0,
+      "B/op": 1265,
+      "allocs/op": 6
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 1000,
+      "ns/op": 353936.0,
+      "B/op": 17185,
+      "allocs/op": 309
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 1000,
+      "ns/op": 1134748.0,
+      "B/op": 182964,
+      "allocs/op": 3991
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=0",
+      "iterations": 100000,
+      "ns/op": 118.8,
+      "B/op": 16,
+      "allocs/op": 1
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=1",
+      "iterations": 100000,
+      "ns/op": 90.18,
+      "B/op": 32,
+      "allocs/op": 2
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=3",
+      "iterations": 100000,
+      "ns/op": 155.0,
+      "B/op": 128,
+      "allocs/op": 4
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=12",
+      "iterations": 100000,
+      "ns/op": 416.8,
+      "B/op": 512,
+      "allocs/op": 6
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=60",
+      "iterations": 100000,
+      "ns/op": 1412.0,
+      "B/op": 2177,
+      "allocs/op": 8
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=0",
+      "iterations": 100000,
+      "ns/op": 369.9,
+      "B/op": 240,
+      "allocs/op": 5
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=1",
+      "iterations": 100000,
+      "ns/op": 440.0,
+      "B/op": 304,
+      "allocs/op": 6
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=3",
+      "iterations": 100000,
+      "ns/op": 506.4,
+      "B/op": 432,
+      "allocs/op": 7
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=12",
+      "iterations": 100000,
+      "ns/op": 831.6,
+      "B/op": 688,
+      "allocs/op": 8
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=60",
+      "iterations": 100000,
+      "ns/op": 2454.0,
+      "B/op": 2352,
+      "allocs/op": 10
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 1000,
+      "ns/op": 404842.0,
+      "B/op": 17256,
+      "allocs/op": 311
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 1000,
+      "ns/op": 1103470.0,
+      "B/op": 186808,
+      "allocs/op": 4111
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=0",
+      "iterations": 100000,
+      "ns/op": 77.64,
+      "B/op": 16,
+      "allocs/op": 1
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=1",
+      "iterations": 100000,
+      "ns/op": 165.1,
+      "B/op": 32,
+      "allocs/op": 2
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=3",
+      "iterations": 100000,
+      "ns/op": 162.6,
+      "B/op": 128,
+      "allocs/op": 4
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=12",
+      "iterations": 100000,
+      "ns/op": 423.0,
+      "B/op": 512,
+      "allocs/op": 6
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=60",
+      "iterations": 100000,
+      "ns/op": 1405.0,
+      "B/op": 2177,
+      "allocs/op": 8
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=0",
+      "iterations": 100000,
+      "ns/op": 374.8,
+      "B/op": 240,
+      "allocs/op": 5
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=1",
+      "iterations": 100000,
+      "ns/op": 447.2,
+      "B/op": 304,
+      "allocs/op": 6
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=3",
+      "iterations": 100000,
+      "ns/op": 539.2,
+      "B/op": 432,
+      "allocs/op": 7
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=12",
+      "iterations": 100000,
+      "ns/op": 794.9,
+      "B/op": 688,
+      "allocs/op": 8
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=60",
+      "iterations": 100000,
+      "ns/op": 2565.0,
+      "B/op": 2354,
+      "allocs/op": 10
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 1000,
+      "ns/op": 268347.0,
+      "B/op": 17224,
+      "allocs/op": 311
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 1000,
+      "ns/op": 1105598.0,
+      "B/op": 186812,
+      "allocs/op": 4111
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=0",
+      "iterations": 100000,
+      "ns/op": 73.51,
+      "B/op": 16,
+      "allocs/op": 1
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=1",
+      "iterations": 100000,
+      "ns/op": 91.8,
+      "B/op": 32,
+      "allocs/op": 2
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=3",
+      "iterations": 100000,
+      "ns/op": 117.5,
+      "B/op": 64,
+      "allocs/op": 2
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=12",
+      "iterations": 100000,
+      "ns/op": 270.0,
+      "B/op": 208,
+      "allocs/op": 2
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=false/reactions=60",
+      "iterations": 100000,
+      "ns/op": 1044.0,
+      "B/op": 1040,
+      "allocs/op": 2
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=0",
+      "iterations": 100000,
+      "ns/op": 357.9,
+      "B/op": 240,
+      "allocs/op": 5
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=1",
+      "iterations": 100000,
+      "ns/op": 441.8,
+      "B/op": 304,
+      "allocs/op": 6
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=3",
+      "iterations": 100000,
+      "ns/op": 459.9,
+      "B/op": 320,
+      "allocs/op": 6
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=12",
+      "iterations": 100000,
+      "ns/op": 680.3,
+      "B/op": 464,
+      "allocs/op": 6
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiNames/text=true/reactions=60",
+      "iterations": 100000,
+      "ns/op": 2179.0,
+      "B/op": 1264,
+      "allocs/op": 6
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=1",
+      "iterations": 1000,
+      "ns/op": 301455.0,
+      "B/op": 17182,
+      "allocs/op": 309
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "name": "BenchmarkReactionEmojiHistory/posts=60",
+      "iterations": 1000,
+      "ns/op": 1128728.0,
+      "B/op": 182974,
+      "allocs/op": 3991
+    }
+  ],
+  "limits": [
+    "Local PostgreSQL and in-process warm reaction caches; no remote services, concurrent load or production-capacity measurement.",
+    "Standalone allocation and timing results are not combined-stack throughput measurements."
+  ]
+}

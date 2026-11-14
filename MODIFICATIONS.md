@@ -23,6 +23,15 @@ was added or last changed in behaviour, and what it does and why. When a patch
 is removed (for example because upstream merged it), keep its entry and add the
 removal date.
 
+### reaction-emoji-name-capacity.patch
+
+2026-11-14. Experimental fork-only change, held from upstream after measured
+history latency regressions. Reserve capacity for a post's known reaction emoji names before
+appending them, avoiding repeated slice growth. Message, attachment and
+interactive-block extraction, sorting and duplicate removal keep their existing
+behavior. Adds allocation benchmarks and stored, ordered history fixtures;
+changes no API, schema, configuration or third-party dependency.
+
 ### release-license.patch
 
 2026-11-03. `server/build/release.mk` packages `LICENSE.txt` (AGPL v3.0) with
