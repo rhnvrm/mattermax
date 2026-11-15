@@ -57,3 +57,4 @@ user-thread-count-aggregation.patch
 thread-unread-reply-index.patch
 reply-count-projection.patch
 emoji-name-scan.patch
+attachment-map-decoding.patch

@@ -738,3 +738,13 @@ metadata remain unchanged. Includes regex-oracle equivalence and fuzz checks,
 plus helper, ordered history and balanced mixed-request benchmarks. The mixed
 benchmark records GC work and per-page preparation timings. No schema, settings,
 dependency or enterprise changes.
+
+### attachment-map-decoding.patch
+
+2026-11-15. Decode ordinary JSON attachment maps directly into fresh model
+objects in `Post.Attachments`. Keep the typed-slice path and the existing JSON
+round-trip for unsupported shapes, nested values, nonempty actions, unusual
+numeric forms, invalid UTF-8 and Slack boolean coercions. Preserve nullable and
+empty collections and independent decoded fields. Includes a legacy-decoder
+oracle, generated/fuzz/ownership checks and stored-history benchmarks. No API,
+schema, settings or third-party dependency changes.

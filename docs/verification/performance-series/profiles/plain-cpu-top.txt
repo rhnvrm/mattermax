@@ -1,0 +1,44 @@
+File: mattermax-twenty-plain.test
+Build ID: b3ecc35bef217941c246ac84b2552f35c072eb99
+Type: cpu
+Time: 2026-11-15 00:11:37 UTC
+Duration: 21.76s, Total samples = 5.76s (26.48%)
+Showing nodes accounting for 1.44s, 25.00% of 5.76s total
+Dropped 247 nodes (cum <= 0.03s)
+Showing top 35 nodes out of 256
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%      3.48s 60.42%  testing.(*B).runN
+     0.01s  0.17%  0.17%      3.29s 57.12%  github.com/mattermost/mattermost/server/v8/channels/app.BenchmarkAttachmentMapHistory.func2
+         0     0%  0.17%      3.29s 57.12%  testing.(*B).launch
+     0.01s  0.17%  0.35%      3.16s 54.86%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).PreparePostListForClient
+         0     0%  0.35%      2.12s 36.81%  github.com/mattermost/mattermost/server/v8/channels/store/sqlstore.(*sqlxDBWrapper).Select (inline)
+     0.01s  0.17%  0.52%      2.12s 36.81%  github.com/mattermost/mattermost/server/v8/channels/store/sqlstore.(*sqlxDBWrapper).SelectContext
+     0.01s  0.17%  0.69%      2.03s 35.24%  github.com/jmoiron/sqlx.(*DB).SelectContext (inline)
+         0     0%  0.69%      2.02s 35.07%  github.com/jmoiron/sqlx.SelectContext
+         0     0%  0.69%      1.81s 31.42%  database/sql.(*DB).retry
+     0.01s  0.17%  0.87%      1.77s 30.73%  github.com/jmoiron/sqlx.(*DB).QueryxContext
+         0     0%  0.87%      1.75s 30.38%  database/sql.(*DB).QueryContext
+         0     0%  0.87%      1.75s 30.38%  database/sql.(*DB).QueryContext.func1
+     0.01s  0.17%  1.04%      1.75s 30.38%  database/sql.(*DB).query
+         0     0%  1.04%      1.71s 29.69%  database/sql.(*DB).queryDC
+     0.02s  0.35%  1.39%      1.71s 29.69%  database/sql.withLock
+         0     0%  1.39%      1.56s 27.08%  database/sql.(*DB).queryDC.func1
+     0.01s  0.17%  1.56%      1.27s 22.05%  database/sql.ctxDriverQuery
+     0.01s  0.17%  1.74%      1.26s 21.88%  github.com/lib/pq.(*conn).QueryContext
+     1.24s 21.53% 23.26%      1.24s 21.53%  internal/runtime/syscall/linux.Syscall6
+     0.01s  0.17% 23.44%      1.23s 21.35%  github.com/lib/pq.(*conn).query
+         0     0% 23.44%      1.21s 21.01%  runtime.systemstack
+     0.02s  0.35% 23.78%      1.20s 20.83%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).GetPriorityForPostList
+         0     0% 23.78%      1.18s 20.49%  github.com/mattermost/mattermost/server/v8/channels/store/sqlstore.(*SqlPostPriorityStore).GetForPosts
+     0.01s  0.17% 23.96%      1.17s 20.31%  runtime.mcall
+         0     0% 23.96%      1.15s 19.97%  runtime.schedule
+     0.03s  0.52% 24.48%      1.08s 18.75%  runtime.findRunnable
+         0     0% 24.48%      1.03s 17.88%  internal/poll.ignoringEINTRIO (inline)
+         0     0% 24.48%      1.02s 17.71%  syscall.Syscall
+     0.01s  0.17% 24.65%      0.97s 16.84%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).GetAcknowledgementsForPostList
+         0     0% 24.65%      0.96s 16.67%  github.com/mattermost/mattermost/server/v8/channels/store/sqlstore.(*SqlPostAcknowledgementStore).GetForPosts
+     0.01s  0.17% 24.83%      0.95s 16.49%  syscall.RawSyscall6
+         0     0% 24.83%      0.90s 15.62%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).preparePostForClientWithEmbedsAndImages
+         0     0% 24.83%      0.90s 15.62%  runtime.gcBgMarkWorker
+         0     0% 24.83%      0.90s 15.62%  runtime.gcBgMarkWorker.func2
+     0.01s  0.17% 25.00%      0.90s 15.62%  runtime.gcDrain

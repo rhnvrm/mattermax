@@ -1,0 +1,106 @@
+{
+  "status": "passed",
+  "source_sha": "787f4bbe440f56312c41481574bb1a983386fb8c",
+  "environment": {
+    "TZ": "UTC",
+    "GOMAXPROCS": "4",
+    "GOGC": "100",
+    "GOMEMLIMIT": null
+  },
+  "profiles": [
+    {
+      "name": "attachment",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkAttachmentMapHistory$/^fields=64$",
+        "-benchtime=5s",
+        "-count=1",
+        "-cpuprofile=/home/rhnvrm/.bb/thread-storage/thr_jynvcygccx/integration-twenty-attachment.cpu",
+        "-memprofile=/home/rhnvrm/.bb/thread-storage/thr_jynvcygccx/integration-twenty-attachment.mem",
+        "-o",
+        "/tmp/mattermax-twenty-attachment.test",
+        "-timeout=5m"
+      ],
+      "private_log_sha256": "90eab2e9de9af9b2bc513e9c6ba141b15b326fc4c0f9b0ee04c4a05576ebe709",
+      "cpu_sha256": "6e45e4a1e179da24683dda62d620e8f7cd0d829df837443b093476056ac6c19b",
+      "reports": {
+        "cpu": {
+          "file": "attachment-cpu-top.txt",
+          "sha256": "a3eba6ba1d85eceaaa4c5b2cbfa0ccb1f13ee7594d1efe76a9280fd9f5555ea7"
+        },
+        "alloc": {
+          "file": "attachment-alloc-top.txt",
+          "sha256": "73325b42234606daaabc73bf3fb650d2a8339166ff1fb5878b53cf3c5824e95e"
+        }
+      }
+    },
+    {
+      "name": "reactions",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkReactionHistory$/^posts=60$/^warm$",
+        "-benchtime=5s",
+        "-count=1",
+        "-cpuprofile=/home/rhnvrm/.bb/thread-storage/thr_jynvcygccx/integration-twenty-reactions.cpu",
+        "-memprofile=/home/rhnvrm/.bb/thread-storage/thr_jynvcygccx/integration-twenty-reactions.mem",
+        "-o",
+        "/tmp/mattermax-twenty-reactions.test",
+        "-timeout=5m"
+      ],
+      "private_log_sha256": "d1dd77a8dbd376e8eb42fad46c5ede43797a67058d8273b3fe6d9174fad0f2c8",
+      "cpu_sha256": "b82a22a58af6d3d73a54374a3ddac26ad56b26f00feaed424aa497e3ebf999a0",
+      "reports": {
+        "cpu": {
+          "file": "reactions-cpu-top.txt",
+          "sha256": "e253c19d5c7c0fc53ab055f9b27ddd8b03ca69ddcfa113c713431fa7c7cf51ff"
+        },
+        "alloc": {
+          "file": "reactions-alloc-top.txt",
+          "sha256": "ee286ab8f3053052c4bf95716b0895e9d7918afae11a1e79f09a1435d3cf174c"
+        }
+      }
+    },
+    {
+      "name": "plain",
+      "command": [
+        "go",
+        "test",
+        "./channels/app",
+        "-run",
+        "^$",
+        "-bench",
+        "^BenchmarkAttachmentMapHistory$/^plain$",
+        "-benchtime=5s",
+        "-count=1",
+        "-cpuprofile=/home/rhnvrm/.bb/thread-storage/thr_jynvcygccx/integration-twenty-plain.cpu",
+        "-memprofile=/home/rhnvrm/.bb/thread-storage/thr_jynvcygccx/integration-twenty-plain.mem",
+        "-o",
+        "/tmp/mattermax-twenty-plain.test",
+        "-timeout=5m"
+      ],
+      "private_log_sha256": "3938b63e8aeb7fe9c6d0c98a8b5c5ef0c6baa9597d8ad166f4e7a2c891e8d94d",
+      "cpu_sha256": "6d0a16c3ce30e0c94ac4d39dab66db705cf34ac2a8492375126e3862f9df968e",
+      "reports": {
+        "cpu": {
+          "file": "plain-cpu-top.txt",
+          "sha256": "22ccfe48be8cc2a305c9d88f0f425136323366020b028d395ecd333ac5f1db73"
+        },
+        "alloc": {
+          "file": "plain-alloc-top.txt",
+          "sha256": "1b0e3ac16345034fa399c6ef86c619265fe354d7a996ea69f175adc16f11536d"
+        }
+      }
+    }
+  ],
+  "scope": "Current combined-stack synthetic preparation profiles for bottleneck selection. Includes fixture/test startup; no comparative latency or throughput claim."
+}

@@ -1,0 +1,43 @@
+File: mattermax-twenty-attachment.test
+Build ID: b3ecc35bef217941c246ac84b2552f35c072eb99
+Type: alloc_space
+Time: 2026-11-15 00:11:02 UTC
+Showing nodes accounting for 1848.32MB, 84.92% of 2176.49MB total
+Dropped 424 nodes (cum <= 10.88MB)
+Showing top 35 nodes out of 90
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%  1994.37MB 91.63%  testing.(*B).runN
+         0     0%     0%  1927.91MB 88.58%  github.com/mattermost/mattermost/server/v8/channels/app.BenchmarkAttachmentMapHistory.func2
+         0     0%     0%  1921.39MB 88.28%  testing.(*B).launch
+    7.02MB  0.32%  0.32%  1916.38MB 88.05%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).PreparePostListForClient
+         0     0%  0.32%  1867.31MB 85.79%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).preparePostForClientWithEmbedsAndImages
+         0     0%  0.32%  1465.25MB 67.32%  github.com/mattermost/mattermost/server/public/model.(*Post).AllStrings
+         0     0%  0.32%  1076.65MB 49.47%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).getEmbedsAndImages
+    8.50MB  0.39%  0.71%  1070.65MB 49.19%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).getImagesForPost
+    2.50MB  0.11%  0.83%  1023.63MB 47.03%  github.com/mattermost/mattermost/server/public/model.(*Post).Attachments
+ 1021.13MB 46.92% 47.74%  1021.13MB 46.92%  github.com/mattermost/mattermost/server/public/model.decodeAttachmentMap
+   20.50MB  0.94% 48.69%   790.66MB 36.33%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).preparePostForClient
+  785.67MB 36.10% 84.78%   785.67MB 36.10%  github.com/mattermost/mattermost/server/public/model.appendNonWhitespaceOnlyMessage (inline)
+         0     0% 84.78%   746.15MB 34.28%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).getCustomEmojisForPost
+         0     0% 84.78%   746.15MB 34.28%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).getEmojisAndReactionsForPost
+         0     0% 84.78%   746.15MB 34.28%  github.com/mattermost/mattermost/server/v8/channels/app.getEmojiNamesForPost
+         0     0% 84.78%   343.04MB 15.76%  github.com/mattermost/mattermost/server/public/model.(*Post).InteractiveBlocksImageURLs
+         0     0% 84.78%   167.21MB  7.68%  runtime.main
+         0     0% 84.78%   146.06MB  6.71%  github.com/mattermost/mattermost/server/v8/channels/app.TestMain
+         0     0% 84.78%   146.06MB  6.71%  main.main
+         0     0% 84.78%   145.42MB  6.68%  github.com/mattermost/mattermost/server/v8/channels/testlib.(*MainHelper).Main
+         0     0% 84.78%   139.12MB  6.39%  github.com/mattermost/go-i18n/i18n.LoadTranslationFile (inline)
+         0     0% 84.78%   139.12MB  6.39%  github.com/mattermost/go-i18n/i18n/bundle.(*Bundle).LoadTranslationFile
+         0     0% 84.78%   139.12MB  6.39%  github.com/mattermost/mattermost/server/public/shared/i18n.TranslationsPreInit
+         0     0% 84.78%   139.12MB  6.39%  github.com/mattermost/mattermost/server/public/shared/i18n.initTranslationsWithDir
+         0     0% 84.78%   139.12MB  6.39%  github.com/mattermost/mattermost/server/v8/channels/utils.TranslationsPreInit
+         0     0% 84.78%   122.51MB  5.63%  github.com/mattermost/go-i18n/i18n/bundle.(*Bundle).ParseTranslationFileBytes
+         0     0% 84.78%   113.67MB  5.22%  github.com/mattermost/go-i18n/i18n/bundle.parseTranslations
+    0.50MB 0.023% 84.81%    73.06MB  3.36%  encoding/json.Unmarshal
+         0     0% 84.81%    72.98MB  3.35%  testing.(*B).run1.func1
+         0     0% 84.81%    72.56MB  3.33%  encoding/json.(*decodeState).array
+         0     0% 84.81%    72.56MB  3.33%  encoding/json.(*decodeState).unmarshal
+         0     0% 84.81%    72.56MB  3.33%  encoding/json.(*decodeState).value
+    2.50MB  0.11% 84.92%    71.01MB  3.26%  encoding/json.(*decodeState).object
+         0     0% 84.92%    66.46MB  3.05%  github.com/mattermost/mattermost/server/v8/channels/app.BenchmarkAttachmentMapHistory
+         0     0% 84.92%    64.56MB  2.97%  github.com/mattermost/go-i18n/i18n/bundle.unmarshal

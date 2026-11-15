@@ -1,0 +1,43 @@
+File: mattermax-twenty-plain.test
+Build ID: b3ecc35bef217941c246ac84b2552f35c072eb99
+Type: alloc_space
+Time: 2026-11-15 00:11:59 UTC
+Showing nodes accounting for 1204.42MB, 65.31% of 1844.03MB total
+Dropped 378 nodes (cum <= 9.22MB)
+Showing top 35 nodes out of 104
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%  1691.66MB 91.74%  testing.(*B).runN
+         0     0%     0%  1627.24MB 88.24%  github.com/mattermost/mattermost/server/v8/channels/app.BenchmarkAttachmentMapHistory.func2
+         0     0%     0%  1625.24MB 88.14%  testing.(*B).launch
+  100.31MB  5.44%  5.44%  1621.74MB 87.95%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).PreparePostListForClient
+         0     0%  5.44%   922.73MB 50.04%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).preparePostForClientWithEmbedsAndImages
+  271.55MB 14.73% 20.17%   817.23MB 44.32%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).preparePostForClient
+         0     0% 20.17%   596.70MB 32.36%  github.com/mattermost/mattermost/server/v8/channels/store/sqlstore.(*sqlxDBWrapper).SelectContext
+         0     0% 20.17%   596.20MB 32.33%  github.com/mattermost/mattermost/server/v8/channels/store/sqlstore.(*sqlxDBWrapper).Select (inline)
+         0     0% 20.17%   566.20MB 30.70%  github.com/jmoiron/sqlx.(*DB).SelectContext (inline)
+         0     0% 20.17%   566.20MB 30.70%  github.com/jmoiron/sqlx.SelectContext
+       7MB  0.38% 20.55%   548.20MB 29.73%  github.com/jmoiron/sqlx.(*DB).QueryxContext
+         0     0% 20.55%   542.70MB 29.43%  database/sql.(*DB).retry
+         0     0% 20.55%   541.70MB 29.38%  database/sql.(*DB).QueryContext
+         0     0% 20.55%   541.70MB 29.38%  database/sql.(*DB).QueryContext.func1
+       1MB 0.054% 20.60%   541.70MB 29.38%  database/sql.(*DB).query
+    4.50MB  0.24% 20.84%   534.70MB 29.00%  database/sql.(*DB).queryDC
+         0     0% 20.84%   523.20MB 28.37%  database/sql.withLock
+  522.68MB 28.34% 49.19%   522.68MB 28.34%  github.com/mattermost/mattermost/server/public/model.(*Post).Clone (inline)
+         0     0% 49.19%   517.19MB 28.05%  database/sql.(*DB).queryDC.func1
+    1.50MB 0.081% 49.27%   308.86MB 16.75%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).GetPriorityForPostList
+         0     0% 49.27%   307.36MB 16.67%  github.com/mattermost/mattermost/server/v8/channels/store/sqlstore.(*SqlPostPriorityStore).GetForPosts
+       4MB  0.22% 49.49%   290.39MB 15.75%  database/sql.driverArgsConnLocked
+         0     0% 49.49%   289.85MB 15.72%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).GetAcknowledgementsForPostList
+       1MB 0.054% 49.54%   289.85MB 15.72%  github.com/mattermost/mattermost/server/v8/channels/store/sqlstore.(*SqlPostAcknowledgementStore).GetForPosts
+         0     0% 49.54%   286.39MB 15.53%  database/sql.defaultCheckNamedValue
+         0     0% 49.54%   286.39MB 15.53%  database/sql/driver.callValuerValue
+         0     0% 49.54%   286.39MB 15.53%  database/sql/driver.defaultConverter.ConvertValue
+  100.66MB  5.46% 55.00%   286.39MB 15.53%  github.com/lib/pq.StringArray.Value
+         0     0% 55.00%   227.31MB 12.33%  database/sql.ctxDriverQuery
+         0     0% 55.00%   227.31MB 12.33%  github.com/lib/pq.(*conn).QueryContext
+    4.50MB  0.24% 55.24%   218.81MB 11.87%  github.com/lib/pq.(*conn).query
+  185.72MB 10.07% 65.31%   185.72MB 10.07%  github.com/lib/pq.appendArrayQuotedBytes
+         0     0% 65.31%   181.30MB  9.83%  github.com/lib/pq.(*stmt).exec
+         0     0% 65.31%   143.95MB  7.81%  runtime.main
+         0     0% 65.31%   128.40MB  6.96%  github.com/mattermost/mattermost/server/v8/channels/app.TestMain

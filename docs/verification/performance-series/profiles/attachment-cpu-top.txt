@@ -1,0 +1,44 @@
+File: mattermax-twenty-attachment.test
+Build ID: b3ecc35bef217941c246ac84b2552f35c072eb99
+Type: cpu
+Time: 2026-11-15 00:10:46 UTC
+Duration: 16.09s, Total samples = 6.35s (39.47%)
+Showing nodes accounting for 3.63s, 57.17% of 6.35s total
+Dropped 287 nodes (cum <= 0.03s)
+Showing top 35 nodes out of 157
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%      5.24s 82.52%  testing.(*B).runN
+         0     0%     0%      5.06s 79.69%  github.com/mattermost/mattermost/server/v8/channels/app.BenchmarkAttachmentMapHistory.func2
+         0     0%     0%      5.06s 79.69%  testing.(*B).launch
+         0     0%     0%      4.65s 73.23%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).PreparePostListForClient
+         0     0%     0%      4.48s 70.55%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).preparePostForClientWithEmbedsAndImages
+         0     0%     0%      3.88s 61.10%  github.com/mattermost/mattermost/server/public/model.(*Post).Attachments
+     0.41s  6.46%  6.46%      3.82s 60.16%  github.com/mattermost/mattermost/server/public/model.decodeAttachmentMap
+         0     0%  6.46%      2.90s 45.67%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).getEmbedsAndImages
+     0.01s  0.16%  6.61%      2.88s 45.35%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).getImagesForPost
+     0.06s  0.94%  7.56%      2.82s 44.41%  github.com/mattermost/mattermost/server/public/model.(*Post).AllStrings
+     0.33s  5.20% 12.76%      1.66s 26.14%  runtime.mapaccess1_faststr
+         0     0% 12.76%      1.58s 24.88%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).preparePostForClient
+         0     0% 12.76%      1.54s 24.25%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).getCustomEmojisForPost
+         0     0% 12.76%      1.54s 24.25%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).getEmojisAndReactionsForPost
+     0.02s  0.31% 13.07%      1.54s 24.25%  github.com/mattermost/mattermost/server/v8/channels/app.getEmojiNamesForPost
+     0.45s  7.09% 20.16%      1.41s 22.20%  internal/runtime/maps.(*Map).getWithoutKeySmallFastStr
+         0     0% 20.16%      1.38s 21.73%  github.com/mattermost/mattermost/server/public/model.(*Post).InteractiveBlocksImageURLs
+         0     0% 20.16%      1.06s 16.69%  runtime.systemstack
+         0     0% 20.16%      0.84s 13.23%  runtime.gcBgMarkWorker
+         0     0% 20.16%      0.84s 13.23%  runtime.gcBgMarkWorker.func2
+     0.02s  0.31% 20.47%      0.84s 13.23%  runtime.gcDrain
+     0.05s  0.79% 21.26%      0.80s 12.60%  runtime.mallocgc
+     0.76s 11.97% 33.23%      0.76s 11.97%  aeshashbody
+     0.04s  0.63% 33.86%      0.63s  9.92%  runtime.newobject
+     0.05s  0.79% 34.65%      0.62s  9.76%  runtime.mallocgcSmallScanNoHeader
+         0     0% 34.65%      0.61s  9.61%  runtime.gcDrainMarkWorkerIdle (inline)
+     0.05s  0.79% 35.43%      0.56s  8.82%  runtime.mapIterStart
+     0.32s  5.04% 40.47%      0.52s  8.19%  internal/runtime/maps.(*Iter).Next
+     0.23s  3.62% 44.09%      0.41s  6.46%  runtime.scanObject
+         0     0% 44.09%      0.41s  6.46%  runtime.scanSpan
+     0.30s  4.72% 48.82%      0.41s  6.46%  runtime.tryDeferToSpanScan
+     0.13s  2.05% 50.87%      0.40s  6.30%  runtime.scanObjectsSmall
+     0.03s  0.47% 51.34%      0.35s  5.51%  github.com/mattermost/mattermost/server/v8/channels/app.BenchmarkAttachmentMapHistory.func2.1
+     0.04s  0.63% 51.97%      0.33s  5.20%  runtime.mapIterNext
+     0.33s  5.20% 57.17%      0.33s  5.20%  unicode/utf8.ValidString

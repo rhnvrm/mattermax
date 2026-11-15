@@ -1,0 +1,44 @@
+File: mattermax-twenty-reactions.test
+Build ID: b3ecc35bef217941c246ac84b2552f35c072eb99
+Type: cpu
+Time: 2026-11-15 00:11:12 UTC
+Duration: 14.02s, Total samples = 4.09s (29.17%)
+Showing nodes accounting for 0.84s, 20.54% of 4.09s total
+Dropped 278 nodes (cum <= 0.02s)
+Showing top 35 nodes out of 207
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%      2.56s 62.59%  testing.(*B).runN
+         0     0%     0%      2.36s 57.70%  github.com/mattermost/mattermost/server/v8/channels/app.BenchmarkReactionHistory.func2.2
+         0     0%     0%      2.36s 57.70%  testing.(*B).launch
+     0.03s  0.73%  0.73%      2.28s 55.75%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).PreparePostListForClient
+         0     0%  0.73%      0.82s 20.05%  runtime.systemstack
+         0     0%  0.73%      0.79s 19.32%  github.com/mattermost/mattermost/server/v8/channels/store/localcachelayer.LocalCacheReactionStore.GetForPosts
+         0     0%  0.73%      0.79s 19.32%  github.com/mattermost/mattermost/server/v8/channels/store/sqlstore.(*sqlxDBWrapper).Select (inline)
+         0     0%  0.73%      0.79s 19.32%  github.com/mattermost/mattermost/server/v8/channels/store/sqlstore.(*sqlxDBWrapper).SelectContext
+     0.05s  1.22%  1.96%      0.78s 19.07%  runtime.mallocgc
+         0     0%  1.96%      0.76s 18.58%  github.com/jmoiron/sqlx.(*DB).SelectContext (inline)
+         0     0%  1.96%      0.76s 18.58%  github.com/jmoiron/sqlx.SelectContext
+         0     0%  1.96%      0.74s 18.09%  database/sql.withLock
+     0.02s  0.49%  2.44%      0.72s 17.60%  github.com/mattermost/mattermost/server/v8/channels/store/localcachelayer.(*LocalCacheStore).doStandardReadCache
+         0     0%  2.44%      0.71s 17.36%  database/sql.(*DB).retry
+         0     0%  2.44%      0.70s 17.11%  github.com/mattermost/mattermost/server/v8/platform/services/cache.(*LRU).Get
+         0     0%  2.44%      0.70s 17.11%  github.com/mattermost/mattermost/server/v8/platform/services/cache.(*LRU).get
+         0     0%  2.44%      0.68s 16.63%  runtime.gcBgMarkWorker
+         0     0%  2.44%      0.68s 16.63%  runtime.gcBgMarkWorker.func2
+         0     0%  2.44%      0.68s 16.63%  runtime.gcDrain
+         0     0%  2.44%      0.68s 16.63%  runtime.mcall
+         0     0%  2.44%      0.67s 16.38%  database/sql.(*DB).QueryContext
+         0     0%  2.44%      0.67s 16.38%  database/sql.(*DB).QueryContext.func1
+         0     0%  2.44%      0.67s 16.38%  database/sql.(*DB).query
+         0     0%  2.44%      0.67s 16.38%  database/sql.(*DB).queryDC
+         0     0%  2.44%      0.66s 16.14%  github.com/jmoiron/sqlx.(*DB).QueryxContext
+         0     0%  2.44%      0.64s 15.65%  runtime.schedule
+         0     0%  2.44%      0.63s 15.40%  database/sql.(*DB).queryDC.func1
+     0.61s 14.91% 17.36%      0.61s 14.91%  internal/runtime/syscall/linux.Syscall6
+         0     0% 17.36%      0.60s 14.67%  github.com/mattermost/mattermost/server/v8/channels/app.(*App).preparePostForClientWithEmbedsAndImages
+     0.11s  2.69% 20.05%      0.59s 14.43%  github.com/mattermost/mattermost/server/v8/channels/store/localcachelayer.(*cachedReactions).UnmarshalMsg
+     0.01s  0.24% 20.29%      0.58s 14.18%  runtime.findRunnable
+     0.01s  0.24% 20.54%      0.54s 13.20%  database/sql.ctxDriverQuery
+         0     0% 20.54%      0.53s 12.96%  github.com/lib/pq.(*conn).QueryContext
+         0     0% 20.54%      0.52s 12.71%  github.com/lib/pq.(*conn).query
+         0     0% 20.54%      0.49s 11.98%  runtime.gcDrainMarkWorkerIdle (inline)
